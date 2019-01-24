@@ -8,7 +8,9 @@
 
 import Darwin
 
-//This function ask the user to enter one of the numberOfChoice available. If the input is incorrect, he ask again until the choice is correct
+var myGame: Game
+
+//This function ask the user to enter one of the choice available. If the input is incorrect, he ask again until the choice is correct
 func askUserInput(introduction: String, myChoices: [String]) -> Int {
     var result: Int = 99
     print(introduction + "\n\n")
@@ -24,7 +26,10 @@ func askUserInput(introduction: String, myChoices: [String]) -> Int {
                 }
             }
         }
-        print("Error! WRONG CHOICE!\n\nPlease enter one of the above option:")
+        print("Error! WRONG CHOICE!\n\nPlease enter one of the option:\n")
+        for i in myChoices {
+            print(i)
+        }
     }
     return 999
 }
@@ -39,6 +44,8 @@ case 2:
     print("Goodbye!")
     exit(0)
 default:
-    print("Error! Please try again")
+    print("The program encounter an inexpected error. Please try again")
     exit(2)
 }
+
+myGame = Game()
