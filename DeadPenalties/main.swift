@@ -49,6 +49,11 @@ func askUserText(introduction: String) -> String {
     return "ERROR"
 }
 
+//This function is called when the program encounter an unexpected error
+func stopError() {
+    print("The program encounter an inexpected error. Please try again")
+    exit(2)
+}
 //The game Start Here with the main menu
 introduction = "Welcome to the Game Dead Penalties. Are you ready to start a new Game ?"
 choices = ["1. Yeah let's fight! I'm ready!", "2. Well...I'm not sure...I Better leave here.."]
@@ -61,18 +66,17 @@ case 2:
     print("Goodbye!")
     exit(0)
 default:
-    print("The program encounter an inexpected error. Please try again")
-    exit(2)
+    stopError()
 }
 
 for player in 1...Game.numberOfPlayer {
     myGame.addPlayer(name: askUserText(introduction: "Player \(player), please enter your name"))
     print("Alright! We shall now call you \(myGame.getPlayerName(ofPlayer: player)) ")
-    for _ in 1...Character.numberOfCharacters {
+    for character in 1...Character.numberOfCharacters {
         introduction = "Please Choose the type of your character. Choose carrefully, you can't change it later"
         choices = ["1.Fighter: Classic","2.Magus: Healer","3.Colossus: Monster","4.Dwarf: useless"]
         userChoice = askUserInput(introduction: introduction, myChoices: choices)
-        introduction = "Please enter the name of the character"
+        introduction = "Please enter the name of the character number \(character)"
         switch userChoice {
         case 1:
             myGame.addCharacter(ofPlayer: player, type: "Fighter", name: askUserText(introduction: introduction))
@@ -83,7 +87,7 @@ for player in 1...Game.numberOfPlayer {
         case 4:
             myGame.addCharacter(ofPlayer: player, type: "Dwarf", name: askUserText(introduction: introduction))
         default:
-            exit(99)
+            stopError()
         }
     }
     }
