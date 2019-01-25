@@ -69,25 +69,34 @@ default:
     stopError()
 }
 
+choices = ["1.Fighter: \n \(Fighter.description)","2.Magus: \n \(Magus.description)","3.Colossus: \n \(Colossus.description)","4.Dwarf: \n \(Dwarf.description)"]
+
 for player in 1...Game.numberOfPlayer {
     myGame.addPlayer(name: askUserText(introduction: "Player \(player), please enter your name"))
     print("Alright! We shall now call you \(myGame.getPlayerName(ofPlayer: player)) ")
     for character in 1...Character.numberOfCharacters {
-        introduction = "Please Choose the type of your character. Choose carrefully, you can't change it later"
-        choices = ["1.Fighter: Classic","2.Magus: Healer","3.Colossus: Monster","4.Dwarf: useless"]
+        introduction = "Please Choose the type of the character number \(character). Choose carrefully, you can't change it later!\n"
         userChoice = askUserInput(introduction: introduction, myChoices: choices)
-        introduction = "Please enter the name of the character number \(character)"
         switch userChoice {
         case 1:
+            introduction = "Please enter the name of your Fighter"
             myGame.addCharacter(ofPlayer: player, type: "Fighter", name: askUserText(introduction: introduction))
         case 2:
+            introduction = "Please enter the name of your Magus"
             myGame.addCharacter(ofPlayer: player, type: "Magus", name: askUserText(introduction: introduction))
         case 3:
+            introduction = "Please enter the name of your Colossus"
             myGame.addCharacter(ofPlayer: player, type: "Colossus", name: askUserText(introduction: introduction))
         case 4:
+            introduction = "Please enter the name of your Dwarf"
             myGame.addCharacter(ofPlayer: player, type: "Dwarf", name: askUserText(introduction: introduction))
         default:
             stopError()
         }
     }
+    print("Alright \(myGame.getPlayerName(ofPlayer: player)), here is a quick summary of you're team:")
+    for character in 1...Character.numberOfCharacters {
+        print("\(myGame.getCharacterName(ofPlayer: player, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: player, ofCharacter: character))")
     }
+    }
+

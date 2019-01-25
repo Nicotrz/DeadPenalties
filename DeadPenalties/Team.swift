@@ -26,4 +26,12 @@ class Team {
         }
     }
     
+    func getCharacterName(ofCharacter index: Int) -> String {
+        return charactersArray[index - 1].name
+    }
+    
+    func getCharacterType(ofCharacter index: Int) -> String {
+        return charactersArray[index - 1].type
+    }
+    
 }

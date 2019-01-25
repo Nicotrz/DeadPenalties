@@ -7,6 +7,7 @@
 //
 
 class Game {
+    
     static let numberOfPlayer = 2
     
     var players = [Team]()
@@ -21,5 +22,13 @@ class Game {
     
     func addCharacter(ofPlayer index: Int, type: String, name:String) {
         players[index-1].addCharacter(type: type, name: name)
+    }
+    
+    func getCharacterName(ofPlayer index_player: Int,ofCharacter index_character:Int ) -> String {
+        return players[index_player - 1].getCharacterName(ofCharacter: index_character)
+    }
+    
+    func getCharacterType(ofPlayer index_player: Int,ofCharacter index_character:Int) -> String {
+        return players[index_player - 1].getCharacterType(ofCharacter: index_character)
     }
 }

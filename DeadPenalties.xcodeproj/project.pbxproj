@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0607E9BE21FB7B58003A4F5A /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0607E9BD21FB7B58003A4F5A /* Weapon.swift */; };
 		063DEC2421FA4077000C046B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DEC2321FA4077000C046B /* Character.swift */; };
 		063DEC2621FA4324000C046B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DEC2521FA4324000C046B /* Team.swift */; };
 		063DEC2821FA553A000C046B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DEC2721FA553A000C046B /* Game.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0607E9BD21FB7B58003A4F5A /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		063DEC2321FA4077000C046B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		063DEC2521FA4324000C046B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		063DEC2721FA553A000C046B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				063DEC2B21FAEC01000C046B /* Magus.swift */,
 				063DEC2D21FAEC47000C046B /* Colossus.swift */,
 				063DEC2F21FAEC91000C046B /* Dwarf.swift */,
+				0607E9BD21FB7B58003A4F5A /* Weapon.swift */,
 			);
 			path = DeadPenalties;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				063DEC2421FA4077000C046B /* Character.swift in Sources */,
 				063DEC2821FA553A000C046B /* Game.swift in Sources */,
 				063DEC2C21FAEC01000C046B /* Magus.swift in Sources */,
+				0607E9BE21FB7B58003A4F5A /* Weapon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

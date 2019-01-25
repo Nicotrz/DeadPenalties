@@ -9,8 +9,11 @@
 class Dwarf: Character {
     
     static let startLifePoint = 50
+    static let startWeapon = "Axe"
+    static let description = "You have his loyalty. But be carreful, his size is his weakness!\n Starting Life Point: \(Dwarf.startLifePoint)\nStarting Weapon: \(Dwarf.startWeapon)"
+
 
     init(name: String) {
-        super.init(name: name, life: Dwarf.startLifePoint)
+        super.init(name: name, life: Dwarf.startLifePoint,weapon: Weapon(name: Dwarf.startWeapon),type: "Dwarf")
     }
 }
