@@ -7,22 +7,19 @@
 //
 
 class Game {
-    var players = [Team]()
     static let numberOfPlayer = 2
-    init() {
-        for i in 1...Game.numberOfPlayer {
-            var result = "defaultvalue"
-            while result == "defaultvalue" {
-                print("Player \(i), please choose the name of your team:")
-                if let teamName = readLine() {
-                    if teamName != "" {
-                    result = teamName
-                    players.append(Team(name: result))
-                    print("Alright. We shall now call you \(result)")
-                    }
-                }
-            }
-        }
-}
     
+    var players = [Team]()
+    
+    func addPlayer(name: String) {
+        players.append(Team(name: name))
+    }
+    
+    func getPlayerName(ofPlayer index: Int) -> String {
+        return players[index-1].name
+    }
+    
+    func addCharacter(ofPlayer index: Int, type: String, name:String) {
+        players[index-1].addCharacter(type: type, name: name)
+    }
 }

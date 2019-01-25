@@ -8,12 +8,14 @@
 
 class Character {
     
+    static let numberOfCharacters = 3
+    
     let name: String
     var life: Int
     
-    init(name: String) {
+    init(name: String, life: Int) {
         self.name=name
-        life = 100
+        self.life = life
     }
     
 }

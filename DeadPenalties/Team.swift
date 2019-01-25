@@ -12,8 +12,18 @@ class Team {
     
     init(name:String) {
         self.name = name
-        for i in 0...2 {
-            charactersArray.append(Character(name:"Character \(i)"))
+    }
+    
+    func addCharacter(type: String, name: String) {
+        if type == "Fighter" {
+            charactersArray.append(Fighter(name: name))
+        } else if type == "Magus" {
+            charactersArray.append(Magus(name: name))
+        } else if type == "Colossus" {
+            charactersArray.append(Colossus(name: name))
+        } else if type == "Dwarf" {
+            charactersArray.append(Dwarf(name: name))
         }
     }
+    
 }
