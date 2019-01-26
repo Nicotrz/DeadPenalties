@@ -46,9 +46,12 @@ class Team {
         return charactersArray[index - 1].getWeaponName()
     }
     
-    func getCharacterCharacteristicArray(ofCharacter index:Int) -> [String: Any] {
-        let result: [String: Any] = ["name":getCharacterName(ofCharacter: index),"type":getCharacterType(ofCharacter: index),"life":getCharacterLife(ofCharacter: index),"weapon":getCharacterWeapon(ofCharacter: index),"deadstatus":getCharacterDeadStatus(ofCharacter: index)]
-        return result
+    func getWeaponType(ofCharacter index: Int) -> Bool {
+        return charactersArray[index - 1].getTypeWeapon()
+    }
+
+    func getLifeWeapon(ofCharacter index: Int) -> Int {
+        return charactersArray[index - 1].getLifeWeapon()
     }
     
     func checkIfNameAlreadyExist(name:String ) -> Bool {

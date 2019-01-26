@@ -27,4 +27,13 @@ class Character {
     func getWeaponName() -> String {
         return weapon.type
     }
+    
+    func getTypeWeapon() -> Bool {
+        return weapon.givePoints
+    }
+    
+    func getLifeWeapon() -> Int {
+        return weapon.affectedPoints
+    }
+    
 }

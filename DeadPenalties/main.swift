@@ -25,7 +25,7 @@ func askUserInput(introduction: String, myChoices: [String]) -> Int {
             if let int = Int(choice) {
                 if int <= myChoices.count && int != 0 {
                     result = int
-                    print()
+                    print("\u{001B}[2J")
                     return result
                 }
             }
@@ -44,6 +44,7 @@ func askUserText(introduction: String) -> String {
         if let inputText = readLine() {
             if inputText != "" {
                 result = inputText
+                print("\u{001B}[2J")
                 return result
             }
         }
@@ -111,19 +112,29 @@ for player in 1...Game.numberOfPlayer {
                 print("A character with the name \(name) already exist. Please choose another name")
             }
         }
-        myGame.addCharacter(ofPlayer: player, type: "Fighter", name:name )
+        myGame.addCharacter(ofPlayer: player, type: type, name:name )
     }
+    print("\n\n")
     print("\n\nAlright \(myGame.getPlayerName(ofPlayer: player)), here is a quick summary of you're team:")
     for character in 1...Character.numberOfCharacters {
         print("\(myGame.getCharacterName(ofPlayer: player, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: player, ofCharacter: character))")
     }
+    print()
     }
+print("\n\n")
 
-print("\n\n\nPlayer 1, it is your turn")
-
-for player in 1...Game.numberOfPlayer {
-    for character in 1...Character.numberOfCharacters {
-        var caracteristics = myGame.getCharacterCaracteristicArray(ofPlayer: player, ofCharacter: character)
-        print("Name of the character:\(caracteristics["name"]!)")
+print("\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), it is your turn")
+print("Here is your team:\n")
+for character in 1...Character.numberOfCharacters {
+    if !myGame.getCharacterDeadStatus(ofPlayer: myGame.currentPlayer, ofCharacter: character) {
+        print("\(myGame.getCharacterName(ofPlayer: myGame.currentPlayer, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: myGame.currentPlayer, ofCharacter: character))")
+        print("Life point:\(myGame.getCharacterLife(ofPlayer: myGame.currentPlayer, ofCharacter: character))")
+        print("Weapon:\(myGame.getCharacterWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: character))")
+        if myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: character) {
+            print("This Weapon will give \(myGame.getLifeWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: character)) points to one of the member of your team\n")
+ 
+        } else {
+            print("This Weapon will take \(myGame.getLifeWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: character)) points to one of the member of the other team\n")
+        }
     }
 }

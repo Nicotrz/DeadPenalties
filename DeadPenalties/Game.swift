@@ -11,6 +11,7 @@ class Game {
     static let numberOfPlayer = 2
     
     var players = [Team]()
+    var currentPlayer = 1
     
     func addPlayer(name: String) {
         players.append(Team(name: name))
@@ -32,8 +33,24 @@ class Game {
         return players[index_player - 1].getCharacterType(ofCharacter: index_character)
     }
     
-    func getCharacterCaracteristicArray(ofPlayer index_player: Int, ofCharacter index_character:Int) -> [String: Any] {
-        return players[index_player - 1].getCharacterCharacteristicArray(ofCharacter: index_character)
+    func getCharacterDeadStatus(ofPlayer index_player: Int, ofCharacter index_character: Int) -> Bool {
+        return players[index_player - 1].getCharacterDeadStatus(ofCharacter: index_character)
+    }
+    
+    func getCharacterLife(ofPlayer index_player: Int, ofCharacter index_character: Int) -> Int {
+        return players[index_player - 1].getCharacterLife(ofCharacter: index_character)
+    }
+    
+    func getCharacterWeapon(ofPlayer index_player: Int, ofCharacter index_character: Int) -> String {
+        return players[index_player - 1].getCharacterWeapon(ofCharacter: index_character)
+    }
+    
+    func isAHealerWeapon(ofPlayer index_player: Int, ofCharacter index_character: Int ) -> Bool {
+        return players[index_player - 1].getWeaponType(ofCharacter: index_character)
+    }
+    
+    func getLifeWeapon (ofPlayer index_player: Int, ofCharacter index_character: Int ) -> Int {
+        return players[index_player - 1].getLifeWeapon(ofCharacter: index_character)
     }
     
     func checkIfCharacterAlreadyExist(name:String) -> Bool {
