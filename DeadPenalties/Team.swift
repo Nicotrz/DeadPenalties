@@ -34,4 +34,13 @@ class Team {
         return charactersArray[index - 1].type
     }
     
+    func checkIfNameAlreadyExist(name:String ) -> Bool {
+        for character in charactersArray {
+            if character.name.lowercased() == name.lowercased() {
+                return true
+            }
+        }
+        return false
+    }
+    
 }

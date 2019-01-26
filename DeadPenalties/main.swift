@@ -25,12 +25,14 @@ func askUserInput(introduction: String, myChoices: [String]) -> Int {
             if let int = Int(choice) {
                 if int <= myChoices.count && int != 0 {
                     result = int
+                    print()
                     return result
                 }
             }
         }
-        print("Error! WRONG CHOICE!\n\nPlease enter one of the option:\n")
+        print("\n\nError! WRONG CHOICE!\n\nPlease enter one of the option:\n")
     }
+    stopError()
     return 999
 }
 
@@ -46,6 +48,7 @@ func askUserText(introduction: String) -> String {
             }
         }
     }
+    stopError()
     return "ERROR"
 }
 
@@ -72,29 +75,45 @@ default:
 choices = ["1.Fighter: \n \(Fighter.description)","2.Magus: \n \(Magus.description)","3.Colossus: \n \(Colossus.description)","4.Dwarf: \n \(Dwarf.description)"]
 
 for player in 1...Game.numberOfPlayer {
-    myGame.addPlayer(name: askUserText(introduction: "Player \(player), please enter your name"))
+    var nameAlreadyExist = true
+    var name = ""
+    while nameAlreadyExist {
+        name = askUserText(introduction: "Player \(player), please enter your name")
+        nameAlreadyExist = myGame.checkIfPlayerAlreadyExist(name: name)
+        if nameAlreadyExist {
+            print("\nThe Name \(name) as already beeen choosen. Please choose another name!")
+        }
+    }
+    myGame.addPlayer(name: name)
     print("Alright! We shall now call you \(myGame.getPlayerName(ofPlayer: player)) ")
     for character in 1...Character.numberOfCharacters {
         introduction = "Please Choose the type of the character number \(character). Choose carrefully, you can't change it later!\n"
         userChoice = askUserInput(introduction: introduction, myChoices: choices)
+        var type = ""
         switch userChoice {
         case 1:
-            introduction = "Please enter the name of your Fighter"
-            myGame.addCharacter(ofPlayer: player, type: "Fighter", name: askUserText(introduction: introduction))
+            type = "Fighter"
         case 2:
-            introduction = "Please enter the name of your Magus"
-            myGame.addCharacter(ofPlayer: player, type: "Magus", name: askUserText(introduction: introduction))
+            type = "Magus"
         case 3:
-            introduction = "Please enter the name of your Colossus"
-            myGame.addCharacter(ofPlayer: player, type: "Colossus", name: askUserText(introduction: introduction))
+            type = "Colossus"
         case 4:
-            introduction = "Please enter the name of your Dwarf"
-            myGame.addCharacter(ofPlayer: player, type: "Dwarf", name: askUserText(introduction: introduction))
+            type = "Dwarf"
         default:
             stopError()
         }
+        introduction = "Please enter the name of your \(type)"
+        nameAlreadyExist = true
+        while nameAlreadyExist {
+                name = askUserText(introduction: introduction)
+                nameAlreadyExist = myGame.checkIfCharacterAlreadyExist(name: name)
+            if nameAlreadyExist {
+                print("A character with the name \(name) already exist. Please choose another name")
+            }
+        }
+        myGame.addCharacter(ofPlayer: player, type: "Fighter", name:name )
     }
-    print("Alright \(myGame.getPlayerName(ofPlayer: player)), here is a quick summary of you're team:")
+    print("\n\nAlright \(myGame.getPlayerName(ofPlayer: player)), here is a quick summary of you're team:")
     for character in 1...Character.numberOfCharacters {
         print("\(myGame.getCharacterName(ofPlayer: player, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: player, ofCharacter: character))")
     }
