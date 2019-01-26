@@ -13,7 +13,7 @@ class Magus: Character {
     static let description = "The healer of the team.\n Starting Life Point: \(Magus.startLifePoint)\n Starting Weapon: \(Magus.startWeapon)\n"
 
     init(name: String) {
-        super.init(name: name, life: Magus.startLifePoint,weapon: Weapon(name: Magus.startWeapon),type: "Magus")
+        super.init(name: name, life: Magus.startLifePoint,weapon: MagicWand(),type: "Magus")
     }
     
 }

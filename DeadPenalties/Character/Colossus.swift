@@ -13,7 +13,7 @@ class Colossus: Character {
     static let description = "A really resistant guy. But he won't hurt you a lot..\n Starting Life Point: \(Colossus.startLifePoint)\n Starting Weapon: \(Colossus.startWeapon)\n"
 
     init(name: String) {
-        super.init(name: name, life: Colossus.startLifePoint,weapon: Weapon(name: Colossus.startWeapon),type: "Colossus")
+        super.init(name: name, life: Colossus.startLifePoint,weapon: Fist(),type: "Colossus")
     }
     
 }

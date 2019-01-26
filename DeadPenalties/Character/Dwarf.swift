@@ -14,6 +14,6 @@ class Dwarf: Character {
 
 
     init(name: String) {
-        super.init(name: name, life: Dwarf.startLifePoint,weapon: Weapon(name: Dwarf.startWeapon),type: "Dwarf")
+        super.init(name: name, life: Dwarf.startLifePoint,weapon: Axe(),type: "Dwarf")
     }
 }

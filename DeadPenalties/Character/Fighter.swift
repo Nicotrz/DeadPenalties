@@ -13,7 +13,7 @@ class Fighter: Character {
     static let description = "Classic fighter. A good soldier.\n Starting Life Point: \(Fighter.startLifePoint)\n Starting Weapon: \(Fighter.startWeapon)\n"
     
        init(name: String) {
-        super.init(name: name, life: Fighter.startLifePoint, weapon: Weapon(name: Fighter.startWeapon), type: "Fighter")
+        super.init(name: name, life: Fighter.startLifePoint, weapon: Sword(), type: "Fighter")
     }
     
     

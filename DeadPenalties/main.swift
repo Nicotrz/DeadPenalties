@@ -119,3 +119,11 @@ for player in 1...Game.numberOfPlayer {
     }
     }
 
+print("\n\n\nPlayer 1, it is your turn")
+
+for player in 1...Game.numberOfPlayer {
+    for character in 1...Character.numberOfCharacters {
+        var caracteristics = myGame.getCharacterCaracteristicArray(ofPlayer: player, ofCharacter: character)
+        print("Name of the character:\(caracteristics["name"]!)")
+    }
+}

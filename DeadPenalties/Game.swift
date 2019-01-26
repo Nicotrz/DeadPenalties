@@ -32,6 +32,10 @@ class Game {
         return players[index_player - 1].getCharacterType(ofCharacter: index_character)
     }
     
+    func getCharacterCaracteristicArray(ofPlayer index_player: Int, ofCharacter index_character:Int) -> [String: Any] {
+        return players[index_player - 1].getCharacterCharacteristicArray(ofCharacter: index_character)
+    }
+    
     func checkIfCharacterAlreadyExist(name:String) -> Bool {
         for player in players {
             if player.checkIfNameAlreadyExist(name: name) {

@@ -14,12 +14,17 @@ class Character {
     var life: Int
     var weapon: Weapon
     let type: String
+    var isDead: Bool
     
     init(name: String, life: Int, weapon: Weapon, type: String) {
         self.name=name
         self.life = life
         self.weapon = weapon
         self.type = type
+        self.isDead = false
     }
     
+    func getWeaponName() -> String {
+        return weapon.type
+    }
 }
