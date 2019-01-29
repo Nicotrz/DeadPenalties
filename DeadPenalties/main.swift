@@ -124,17 +124,21 @@ for player in 1...Game.numberOfPlayer {
 print("\n\n")
 
 print("\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), it is your turn")
-print("Here is your team:\n")
-for character in 1...Character.numberOfCharacters {
-    if !myGame.getCharacterDeadStatus(ofPlayer: myGame.currentPlayer, ofCharacter: character) {
-        print("\(myGame.getCharacterName(ofPlayer: myGame.currentPlayer, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: myGame.currentPlayer, ofCharacter: character))")
-        print("Life point:\(myGame.getCharacterLife(ofPlayer: myGame.currentPlayer, ofCharacter: character))")
-        print("Weapon:\(myGame.getCharacterWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: character))")
-        if myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: character) {
-            print("This Weapon will give \(myGame.getLifeWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: character)) points to one of the member of your team\n")
- 
-        } else {
-            print("This Weapon will take \(myGame.getLifeWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: character)) points to one of the member of the other team\n")
+
+for (index,player) in myGame.players.enumerated() {
+    let playertoanalyse = index + 1
+        print("Here is the team of \(player.name):")
+        for character in 1...Character.numberOfCharacters {
+            if !myGame.getCharacterDeadStatus(ofPlayer: playertoanalyse, ofCharacter: character) {
+                print("\(myGame.getCharacterName(ofPlayer: playertoanalyse, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: playertoanalyse, ofCharacter: character))")
+                print("Life point:\(myGame.getCharacterLife(ofPlayer: playertoanalyse, ofCharacter: character))")
+                print("Weapon:\(myGame.getCharacterWeapon(ofPlayer: playertoanalyse, ofCharacter: character))")
+                if myGame.isAHealerWeapon(ofPlayer: playertoanalyse, ofCharacter: character) {
+                    print("This Weapon may give \(myGame.getLifeWeapon(ofPlayer: playertoanalyse, ofCharacter: character)) points to one of the member of his team\n")
+                    
+                } else {
+                    print("This Weapon may take \(myGame.getLifeWeapon(ofPlayer: playertoanalyse, ofCharacter: character)) points to one of the member of your team\n")
+                }
+            }
         }
-    }
 }
