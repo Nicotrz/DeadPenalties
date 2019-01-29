@@ -42,7 +42,7 @@ class Team {
         return charactersArray[index - 1].isDead
     }
     
-    func getCharacterWeapon(ofCharacter index: Int) -> String {
+    func getCharacterWeaponName(ofCharacter index: Int) -> String {
         return charactersArray[index - 1].getWeaponName()
     }
     
@@ -52,6 +52,10 @@ class Team {
 
     func getLifeWeapon(ofCharacter index: Int) -> Int {
         return charactersArray[index - 1].getLifeWeapon()
+    }
+    
+    func getWeaponDescription(ofCharacter index: Int) -> String {
+        return charactersArray[index - 1].getWeaponDescription()
     }
     
     func checkIfNameAlreadyExist(name:String ) -> Bool {

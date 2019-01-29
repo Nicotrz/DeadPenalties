@@ -36,4 +36,8 @@ class Character {
         return weapon.affectedPoints
     }
     
+    func getWeaponDescription() -> String {
+        return weapon.getDescription()
+    }
+    
 }

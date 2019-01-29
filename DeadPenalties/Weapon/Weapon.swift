@@ -18,4 +18,8 @@ class Weapon {
         self.affectedPoints = affectedPoints
     }
     
+    func getDescription() -> String {
+        return "description"
+    }
+    
 }

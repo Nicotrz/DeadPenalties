@@ -55,7 +55,7 @@ func askUserText(introduction: String) -> String {
 
 //This function is called when the program encounter an unexpected error
 func stopError() {
-    print("The program encounter an inexpected error. Please try again")
+    print("The program encounter an unexpected error. Please try again")
     exit(2)
 }
 
@@ -68,8 +68,8 @@ func displayCarracteristics() {
             if !myGame.getCharacterDeadStatus(ofPlayer: playertoanalyse, ofCharacter: character) {
                 print("\(myGame.getCharacterName(ofPlayer: playertoanalyse, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: playertoanalyse, ofCharacter: character))")
                 print("Life point:\(myGame.getCharacterLife(ofPlayer: playertoanalyse, ofCharacter: character))")
-                print("Weapon:\(myGame.getCharacterWeapon(ofPlayer: playertoanalyse, ofCharacter: character))")
-                print("Impact on life point:\(myGame.getLifeWeapon(ofPlayer: playertoanalyse, ofCharacter: character))\n")
+                print("Weapon:\(myGame.getCharacterWeaponName(ofPlayer: playertoanalyse, ofCharacter: character))")
+                print(myGame.getWeaponDescription(ofPlayer: playertoanalyse, ofCharacter: character) + "\n")
             }
         }
     }

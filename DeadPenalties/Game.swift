@@ -41,16 +41,20 @@ class Game {
         return players[index_player - 1].getCharacterLife(ofCharacter: index_character)
     }
     
-    func getCharacterWeapon(ofPlayer index_player: Int, ofCharacter index_character: Int) -> String {
-        return players[index_player - 1].getCharacterWeapon(ofCharacter: index_character)
+    func getCharacterWeaponName(ofPlayer index_player: Int, ofCharacter index_character: Int) -> String {
+        return players[index_player - 1].getCharacterWeaponName(ofCharacter: index_character)
     }
-    
+ 
     func isAHealerWeapon(ofPlayer index_player: Int, ofCharacter index_character: Int ) -> Bool {
         return players[index_player - 1].getWeaponType(ofCharacter: index_character)
     }
     
     func getLifeWeapon (ofPlayer index_player: Int, ofCharacter index_character: Int ) -> Int {
         return players[index_player - 1].getLifeWeapon(ofCharacter: index_character)
+    }
+    
+    func getWeaponDescription(ofPlayer index_player: Int, ofCharacter index_character: Int ) -> String {
+        return players[index_player - 1].getWeaponDescription(ofCharacter: index_character)
     }
     
     func checkIfCharacterAlreadyExist(name:String) -> Bool {
