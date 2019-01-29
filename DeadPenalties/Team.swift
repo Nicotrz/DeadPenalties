@@ -67,4 +67,11 @@ class Team {
         return false
     }
     
+    func attack(character:Int, impactedPoint:Int, healer:Bool ) {
+        charactersArray[character - 1].attack(impactedPoint: impactedPoint, healer: healer)
+    }
+    
+    func kill(character:Int) {
+        charactersArray[character - 1].kill()
+    }
 }

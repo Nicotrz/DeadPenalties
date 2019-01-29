@@ -16,5 +16,8 @@ class Fighter: Character {
         super.init(name: name, life: Fighter.startLifePoint, weapon: Sword(), type: "Fighter")
     }
     
+    override func getStartingLifePoint() -> Int {
+        return Fighter.startLifePoint
+    }
     
 }

@@ -40,4 +40,25 @@ class Character {
         return weapon.getDescription()
     }
     
+    func getStartingLifePoint() -> Int {
+        return 0
+    }
+    
+    
+    func kill() {
+        isDead = true
+        life = 0
+    }
+    
+    func attack(impactedPoint: Int, healer:Bool ) {
+        if healer {
+            life += impactedPoint
+            if life > getStartingLifePoint() {
+                life = getStartingLifePoint()
+            }
+        } else {
+            life -= impactedPoint
+        }
+    }
+    
 }

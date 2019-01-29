@@ -74,4 +74,34 @@ class Game {
         }
         return false
     }
+    
+    
+    func attack(attackerPlayer: Int,attackerCharacter: Int, opponentPlayer: Int, opponentCharacter:Int ) {
+        let damage = getLifeWeapon(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter)
+        let healer = isAHealerWeapon(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter)
+        let lifepoint = getCharacterLife(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter)
+        if ( damage >= lifepoint ) && ( !healer ) {
+            players[opponentPlayer - 1].kill(character: opponentCharacter)
+        } else {
+            players[opponentPlayer - 1].attack(character: opponentCharacter, impactedPoint: damage, healer: healer)
+        }
+    }
+    
+    
+    func checkIfGameIsFinished() -> Bool {
+        var isFinished = true
+        for player in 1...Game.numberOfPlayer {
+            isFinished = true
+            for character in 1...Character.numberOfCharacters {
+                if !getCharacterDeadStatus(ofPlayer: player, ofCharacter: character) {
+                    isFinished = false
+                }
+            }
+            if isFinished {
+                return isFinished
+            }
+        }
+        return isFinished
+    }
+    
 }
