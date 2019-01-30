@@ -20,6 +20,7 @@
 		063DEC2E21FAEC47000C046B /* Colossus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DEC2D21FAEC47000C046B /* Colossus.swift */; };
 		063DEC3021FAEC91000C046B /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DEC2F21FAEC91000C046B /* Dwarf.swift */; };
 		0654917E21F9A83B00175340 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654917D21F9A83B00175340 /* main.swift */; };
+		066CDC36220180A400F6E238 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066CDC35220180A400F6E238 /* Action.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,7 @@
 		063DEC2F21FAEC91000C046B /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; };
 		0654917A21F9A83B00175340 /* DeadPenalties */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DeadPenalties; sourceTree = BUILT_PRODUCTS_DIR; };
 		0654917D21F9A83B00175340 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		066CDC35220180A400F6E238 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				0654917D21F9A83B00175340 /* main.swift */,
+				066CDC35220180A400F6E238 /* Action.swift */,
 				063DEC2521FA4324000C046B /* Team.swift */,
 				063DEC2721FA553A000C046B /* Game.swift */,
 				0607E9C221FC6A01003A4F5A /* Weapon */,
@@ -182,6 +185,7 @@
 				063DEC2421FA4077000C046B /* Character.swift in Sources */,
 				063DEC2821FA553A000C046B /* Game.swift in Sources */,
 				063DEC2C21FAEC01000C046B /* Magus.swift in Sources */,
+				066CDC36220180A400F6E238 /* Action.swift in Sources */,
 				0607E9BE21FB7B58003A4F5A /* Weapon.swift in Sources */,
 				0607E9C821FC6D4A003A4F5A /* Fist.swift in Sources */,
 			);

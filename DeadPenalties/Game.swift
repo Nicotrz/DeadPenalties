@@ -12,6 +12,8 @@ class Game {
     
     var players = [Team]()
     var currentPlayer = 1
+    var lastAction = Action()
+    var isFirstTurn = true
     
     func addPlayer(name: String) {
         players.append(Team(name: name))
@@ -85,6 +87,7 @@ class Game {
         } else {
             players[opponentPlayer - 1].attack(character: opponentCharacter, impactedPoint: damage, healer: healer)
         }
+        saveCurrentState(player: attackerPlayer, character: attackerCharacter, opponentPlayer: opponentPlayer, opponentCharacter: opponentCharacter)
     }
     
     
@@ -102,6 +105,23 @@ class Game {
             }
         }
         return isFinished
+    }
+    
+    func saveCurrentState(player: Int, character: Int, opponentPlayer: Int, opponentCharacter: Int) {
+        lastAction.replaceValue(player: getPlayerName(ofPlayer: player), character: getCharacterName(ofPlayer: player, ofCharacter: character), opponentPlayer: getPlayerName(ofPlayer: opponentPlayer), opponentCharacter: getCharacterName(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter), healer: isAHealerWeapon(ofPlayer: player, ofCharacter: character), haskill: getCharacterDeadStatus(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter), pointsAffected: getLifeWeapon(ofPlayer: player, ofCharacter: character))
+    }
+    
+    func resumeLastAction() -> String {
+    return lastAction.resumeLastAction()
+    }
+    
+    func nextPlayer() {
+        if currentPlayer == Game.numberOfPlayer {
+            currentPlayer = 1
+        } else {
+            currentPlayer += 1
+        }
+        isFirstTurn = false
     }
     
 }

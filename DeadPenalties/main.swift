@@ -25,7 +25,7 @@ func askUserInput(introduction: String, myChoices: [String]) -> Int {
             if let int = Int(choice) {
                 if int <= myChoices.count && int != 0 {
                     result = int
-                    //print("\u{001B}[2J")
+                    print("\u{001B}[2J")
                     return result
                 }
             }
@@ -44,7 +44,7 @@ func askUserText(introduction: String) -> String {
         if let inputText = readLine() {
             if inputText != "" {
                 result = inputText
-                //print("\u{001B}[2J")
+                print("\u{001B}[2J")
                 return result
             }
         }
@@ -66,7 +66,6 @@ func askUserToChooseCharacter(introduction: String, myChoices: [String], player:
             if let int = Int(choice) {
                 if int <= myChoices.count && int != 0 && !myGame.getCharacterDeadStatus(ofPlayer: player, ofCharacter: int){
                     result = int
-              //      print("\u{001B}[2J")
                     return result
                 }
             }
@@ -94,7 +93,6 @@ func displayCarracteristics() {
                 print("\(myGame.getCharacterName(ofPlayer: playertoanalyse, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: playertoanalyse, ofCharacter: character))")
                 print("Life point:\(myGame.getCharacterLife(ofPlayer: playertoanalyse, ofCharacter: character))")
                 print("Weapon:\(myGame.getCharacterWeaponName(ofPlayer: playertoanalyse, ofCharacter: character))")
-                print("Dead Status:\(myGame.getCharacterDeadStatus(ofPlayer: playertoanalyse, ofCharacter: character))")
                 print(myGame.getWeaponDescription(ofPlayer: playertoanalyse, ofCharacter: character) + "\n")
             }
         }
@@ -156,8 +154,7 @@ func initGameNormal () {
             }
             myGame.addCharacter(ofPlayer: player, type: type, name:name )
         }
-        print("\n\n")
-        print("\n\nAlright \(myGame.getPlayerName(ofPlayer: player)), here is a quick summary of you're team:")
+        print("\n\n\n\nAlright \(myGame.getPlayerName(ofPlayer: player)), here is a quick summary of you're team:")
         for character in 1...Character.numberOfCharacters {
             print("\(myGame.getCharacterName(ofPlayer: player, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: player, ofCharacter: character))")
         }
@@ -173,32 +170,34 @@ func initGameNormal () {
 
 
 //The game Start Here with the main menu
-introduction = "Welcome to the Game Dead Penalties. Are you ready to start a new Game ?"
+introduction = "\n\n\nWelcome to the Game Dead Penalties. Are you ready to start a new Game ?\n\n"
 choices = ["1. Yeah let's fight! I'm ready!", "2. Well...I'm not sure...I Better leave here..","3. Launch the game in Testing Mode (skip the configuration of players and characters) "]
 userChoice = askUserInput(introduction:introduction , myChoices: choices)
 
 switch userChoice {
 case 1:
-    print("Starting the game then!")
+    print("Starting the game then!\n\n")
     initGameNormal()
 case 2:
     print("Goodbye!")
     exit(0)
 case 3:
-    print("Testing mode ON")
-    print("I skip the config of player and character\n")
+    print("Testing mode ON\nI skip the config of player and character\n\n")
     initGameDummies()
 default:
     stopError()
 }
 
 
-//Game structure ( BUGGY!!!! :'( )
+//Game structure
 while !myGame.checkIfGameIsFinished() {
-print("Current Player:\(myGame.currentPlayer)")
-print("\n\n\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), it is your turn.\n")
-displayCarracteristics()
+print("\n\n\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), it is your turn.\n\n")
+    if !myGame.isFirstTurn {
+        print("Summary of the last action:")
+        print(myGame.resumeLastAction())
+    }
 
+displayCarracteristics()
 introduction = "Choose your character:"
 choices.removeAll()
 for character in 1...Character.numberOfCharacters {
@@ -207,33 +206,27 @@ for character in 1...Character.numberOfCharacters {
 let attacker = askUserToChooseCharacter(introduction: introduction, myChoices: choices, player: myGame.currentPlayer)
 
     if myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker ) {
-        print("Choose the member to heal:")
+        introduction = "Choose the member to heal:"
     } else {
-        print("Choose your opponent:")
+        introduction = "Choose your opponent:"
     }
+
 var opponentPlayer = 0
-introduction = "Please make a choice:"
 choices.removeAll()
-    for (index,player) in myGame.players.enumerated() {
+    for (index,_) in myGame.players.enumerated() {
         let playerToAnalize = index + 1
         if  ( ( playerToAnalize != myGame.currentPlayer ) && ( !myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker) ) ) || ( ( myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker ) ) && ( playerToAnalize == myGame.currentPlayer ) ) {
             opponentPlayer = playerToAnalize
-            print("Team of: \(player.name)")
         for character in 1...Character.numberOfCharacters {
             choices.append("\(character). " + myGame.getCharacterName(ofPlayer: playerToAnalize, ofCharacter: character))
             }
     }
 }
+    
+    
 let opponent = askUserToChooseCharacter(introduction: introduction, myChoices: choices, player: opponentPlayer)
 
-    print("AttackerPlayer:\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer))\nattackerCharacter:\(myGame.getCharacterName(ofPlayer: myGame.currentPlayer, ofCharacter: attacker)) ")
-    print("OpponentPlayer:\(myGame.getPlayerName(ofPlayer: opponentPlayer))\nopponentCharacter:\(myGame.getCharacterName(ofPlayer: opponentPlayer, ofCharacter: opponent)) ")
     myGame.attack(attackerPlayer: myGame.currentPlayer, attackerCharacter: attacker, opponentPlayer: opponentPlayer, opponentCharacter: opponent)
-displayCarracteristics()
-print("State of the game: Finished? : \(myGame.checkIfGameIsFinished())")
-if myGame.currentPlayer == Game.numberOfPlayer {
-    myGame.currentPlayer = 1
-} else {
-    myGame.currentPlayer += 1
-}
+    myGame.nextPlayer()
+    print("\u{001B}[2J")
 }
