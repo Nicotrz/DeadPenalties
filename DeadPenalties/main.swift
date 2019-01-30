@@ -192,7 +192,7 @@ default:
 //Game structure
 while !myGame.checkIfGameIsFinished() {
 print("\n\n\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), it is your turn.\n\n")
-    if !myGame.isFirstTurn {
+    if !(myGame.firstAction) {
         print("Summary of the last action:")
         print(myGame.resumeLastAction())
     }
@@ -230,3 +230,5 @@ let opponent = askUserToChooseCharacter(introduction: introduction, myChoices: c
     myGame.nextPlayer()
     print("\u{001B}[2J")
 }
+
+print("The Game is finished! \(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)) is the winner!\n\nYou played for \(myGame.nbOfTurn) turns.")

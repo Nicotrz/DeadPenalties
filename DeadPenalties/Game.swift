@@ -13,7 +13,8 @@ class Game {
     var players = [Team]()
     var currentPlayer = 1
     var lastAction = Action()
-    var isFirstTurn = true
+    var nbOfTurn = 0
+    var firstAction = true
     
     func addPlayer(name: String) {
         players.append(Team(name: name))
@@ -118,10 +119,11 @@ class Game {
     func nextPlayer() {
         if currentPlayer == Game.numberOfPlayer {
             currentPlayer = 1
+            nbOfTurn += 1
         } else {
             currentPlayer += 1
         }
-        isFirstTurn = false
+        firstAction = false
     }
     
 }

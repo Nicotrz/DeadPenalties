@@ -8,7 +8,7 @@
 
 class Magus: Character {
     
-    static let startLifePoint = 10
+    static let startLifePoint = 75
     static let startWeapon = "Magic Wand"
     static let description = "The healer of the team.\n Starting Life Point: \(Magus.startLifePoint)\n Starting Weapon: \(Magus.startWeapon)\n"
 
