@@ -11,7 +11,7 @@ class Game {
     static let numberOfPlayer = 2
     
     var players = [Team]()
-    var currentPlayer = 1
+    var currentPlayer = Int.random(in: 1...Game.numberOfPlayer)
     var lastAction = Action()
     var nbOfTurn = 0
     var firstAction = true
@@ -58,6 +58,22 @@ class Game {
     
     func getWeaponDescription(ofPlayer index_player: Int, ofCharacter index_character: Int ) -> String {
         return players[index_player - 1].getWeaponDescription(ofCharacter: index_character)
+    }
+    
+    func generateRandomTypeOfCharacter() -> String {
+        let random = Int.random(in: 1...4)
+        switch random {
+        case 1:
+            return "Colossus"
+        case 2:
+            return "Magus"
+        case 3:
+            return "Dwarf"
+        case 4:
+            return "Fighter"
+        default:
+            return "Fighter"
+        }
     }
     
     func checkIfCharacterAlreadyExist(name:String) -> Bool {
@@ -123,7 +139,34 @@ class Game {
         } else {
             currentPlayer += 1
         }
-        firstAction = false
     }
+    
+    //Func to generate the magic chest or not..
+    func generateMagicChest() -> Bool {
+        return Bool.random()
+        }
+    
+    
+    func generateRandomWeapon(ofPlayer index_player: Int, ofCharacter index_character: Int) -> String {
+        
+        var newWeapon = players[index_player - 1].generateRandomWeapon(ofCharacter: index_character)
+        while newWeapon == "Magic Wand" {
+            if getCharacterType(ofPlayer: index_player, ofCharacter: index_character) == "Magus" {
+                return newWeapon
+            } else {
+                newWeapon = players[index_player - 1].generateRandomWeapon(ofCharacter: index_character)
+            }
+        }
+        return newWeapon
+    }
+    
+    
+    
+    func replaceWeaponByMagicChest(ofPlayer index_player: Int, ofCharacter index_character: Int) {
+        players[index_player - 1].replaceWeaponByMagicChest(ofCharacter: index_character)
+    }
+
+    
+    
     
 }

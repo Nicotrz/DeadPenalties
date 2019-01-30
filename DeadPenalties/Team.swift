@@ -10,6 +10,8 @@ class Team {
     var charactersArray = [Character]()
     let name: String
     
+    var magicChest = Weapon(type: "Dummy", givePoints: true, affectedPoints: 0)
+    
     init(name:String) {
         self.name = name
     }
@@ -56,6 +58,15 @@ class Team {
     
     func getWeaponDescription(ofCharacter index: Int) -> String {
         return charactersArray[index - 1].getWeaponDescription()
+    }
+    
+    func generateRandomWeapon(ofCharacter index: Int) -> String {
+        magicChest = charactersArray[index - 1].randomWeapon()
+        return magicChest.type
+    }
+    
+    func replaceWeaponByMagicChest(ofCharacter index: Int) {
+        charactersArray[index - 1].changeCharacterWeapon(weapon: magicChest)
     }
     
     func checkIfNameAlreadyExist(name:String ) -> Bool {

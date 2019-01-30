@@ -8,6 +8,8 @@
 
 class Weapon {
     
+    static let numberOfWeapon = 3
+    
     let givePoints: Bool
     let affectedPoints: Int
     var type: String

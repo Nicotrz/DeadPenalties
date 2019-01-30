@@ -53,6 +53,7 @@ func askUserText(introduction: String) -> String {
     return "ERROR"
 }
 
+//Same function as askUserInput, but specific for character choose ( It won't propose a character if he is dead )
 func askUserToChooseCharacter(introduction: String, myChoices: [String], player: Int ) -> Int {
     var result: Int = 99
     print(introduction + "\n\n")
@@ -112,6 +113,41 @@ func initGameDummies() {
     myGame.addCharacter(ofPlayer: 2, type: "Dwarf", name: "Gandalf")
 }
 
+func initGameWithRandomCharacter() {
+    for player in 1...Game.numberOfPlayer {
+        var nameAlreadyExist = true
+        var name = ""
+        while nameAlreadyExist {
+            name = askUserText(introduction: "Player \(player), please enter your name")
+            nameAlreadyExist = myGame.checkIfPlayerAlreadyExist(name: name)
+            if nameAlreadyExist {
+                print("\nThe Name \(name) as already beeen choosen. Please choose another name!")
+            }
+        }
+        myGame.addPlayer(name: name)
+        print("Alright! We shall now call you \(myGame.getPlayerName(ofPlayer: player)) ")
+        for _ in 1...Character.numberOfCharacters {
+            let type = myGame.generateRandomTypeOfCharacter()
+            print("The random type of character choosen is a \(type).")
+            introduction = "Please enter the name of your \(type)"
+            nameAlreadyExist = true
+            while nameAlreadyExist {
+                name = askUserText(introduction: introduction)
+                nameAlreadyExist = myGame.checkIfCharacterAlreadyExist(name: name)
+                if nameAlreadyExist {
+                    print("A character with the name \(name) already exist. Please choose another name")
+                }
+            }
+            myGame.addCharacter(ofPlayer: player, type: type, name:name )
+        }
+        print("\n\n\n\nAlright \(myGame.getPlayerName(ofPlayer: player)), here is a quick summary of you're team:")
+        for character in 1...Character.numberOfCharacters {
+            print("\(myGame.getCharacterName(ofPlayer: player, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: player, ofCharacter: character))")
+        }
+        print()
+    }
+}
+
 //Function for normal init of the game
 func initGameNormal () {
     choices = ["1.Fighter: \n \(Fighter.description)","2.Magus: \n \(Magus.description)","3.Colossus: \n \(Colossus.description)","4.Dwarf: \n \(Dwarf.description)"]
@@ -165,6 +201,68 @@ func initGameNormal () {
 
 
 
+//Func for a complete turn of the game
+func play() {
+    myGame.nextPlayer()
+    print("\n\n\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), it is your turn.\n\n")
+    if !(myGame.firstAction) {
+        myGame.firstAction = false
+        print("Summary of the last action:")
+        print(myGame.resumeLastAction())
+    }
+    
+    displayCarracteristics()
+    introduction = "Choose your character:"
+    choices.removeAll()
+    for character in 1...Character.numberOfCharacters {
+        choices.append("\(character). " + myGame.getCharacterName(ofPlayer: myGame.currentPlayer, ofCharacter: character))
+    }
+    let attacker = askUserToChooseCharacter(introduction: introduction, myChoices: choices, player: myGame.currentPlayer)
+    
+    if myGame.generateMagicChest() {
+        print("a magic chest appear! You are so lucky!\nContent:\(myGame.generateRandomWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker))")
+        introduction = "Do you want to take this weapon?"
+        choices = ["1. Yes","2. No"]
+        let choice = askUserInput(introduction: introduction, myChoices: choices)
+        switch choice {
+        case 1:
+            myGame.replaceWeaponByMagicChest(ofPlayer: myGame.currentPlayer, ofCharacter: attacker)
+            print("Weapon Replaced!")
+        case 2:
+            print("Nothing done")
+        default:
+            stopError()
+        }
+        displayCarracteristics()
+    }
+    
+    
+    if myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker ) {
+        introduction = "Choose the member to heal:"
+    } else {
+        introduction = "Choose your opponent:"
+    }
+    
+    var opponentPlayer = 0
+    choices.removeAll()
+    for (index,_) in myGame.players.enumerated() {
+        let playerToAnalize = index + 1
+        if  ( ( playerToAnalize != myGame.currentPlayer ) && ( !myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker) ) ) || ( ( myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker ) ) && ( playerToAnalize == myGame.currentPlayer ) ) {
+            opponentPlayer = playerToAnalize
+            for character in 1...Character.numberOfCharacters {
+                choices.append("\(character). " + myGame.getCharacterName(ofPlayer: playerToAnalize, ofCharacter: character))
+            }
+        }
+    }
+    
+    
+    let opponent = askUserToChooseCharacter(introduction: introduction, myChoices: choices, player: opponentPlayer)
+    
+    myGame.attack(attackerPlayer: myGame.currentPlayer, attackerCharacter: attacker, opponentPlayer: opponentPlayer, opponentCharacter: opponent)
+    print("\u{001B}[2J")
+}
+
+
 
 
 
@@ -183,52 +281,15 @@ case 2:
     exit(0)
 case 3:
     print("Testing mode ON\nI skip the config of player and character\n\n")
-    initGameDummies()
+    initGameWithRandomCharacter()
 default:
     stopError()
 }
 
 
-//Game structure
+//The game begin
 while !myGame.checkIfGameIsFinished() {
-print("\n\n\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), it is your turn.\n\n")
-    if !(myGame.firstAction) {
-        print("Summary of the last action:")
-        print(myGame.resumeLastAction())
-    }
-
-displayCarracteristics()
-introduction = "Choose your character:"
-choices.removeAll()
-for character in 1...Character.numberOfCharacters {
-    choices.append("\(character). " + myGame.getCharacterName(ofPlayer: myGame.currentPlayer, ofCharacter: character))
-}
-let attacker = askUserToChooseCharacter(introduction: introduction, myChoices: choices, player: myGame.currentPlayer)
-
-    if myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker ) {
-        introduction = "Choose the member to heal:"
-    } else {
-        introduction = "Choose your opponent:"
-    }
-
-var opponentPlayer = 0
-choices.removeAll()
-    for (index,_) in myGame.players.enumerated() {
-        let playerToAnalize = index + 1
-        if  ( ( playerToAnalize != myGame.currentPlayer ) && ( !myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker) ) ) || ( ( myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker ) ) && ( playerToAnalize == myGame.currentPlayer ) ) {
-            opponentPlayer = playerToAnalize
-        for character in 1...Character.numberOfCharacters {
-            choices.append("\(character). " + myGame.getCharacterName(ofPlayer: playerToAnalize, ofCharacter: character))
-            }
-    }
-}
-    
-    
-let opponent = askUserToChooseCharacter(introduction: introduction, myChoices: choices, player: opponentPlayer)
-
-    myGame.attack(attackerPlayer: myGame.currentPlayer, attackerCharacter: attacker, opponentPlayer: opponentPlayer, opponentCharacter: opponent)
-    myGame.nextPlayer()
-    print("\u{001B}[2J")
+play()
 }
 
 print("The Game is finished! \(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)) is the winner!\n\nYou played for \(myGame.nbOfTurn) turns.")
