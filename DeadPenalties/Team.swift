@@ -123,8 +123,18 @@ class Team {
         charactersArray[character - 1].gainMagicalPower()
     }
     
+    func lostWeapon(character: Int) {
+        charactersArray[character - 1].lostWeapon()
+    }
+    
     func getMana(character: Int) -> Int {
         return charactersArray[character - 1].mana
+    }
+    
+    func restoreMana() {
+        for character in charactersArray {
+            character.restoreMana()
+        }
     }
     
     func getWeaponMagicalStatus(character: Int) -> Bool {

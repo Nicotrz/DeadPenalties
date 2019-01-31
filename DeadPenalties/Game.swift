@@ -104,23 +104,29 @@ class Game {
         let impactedMana = getManaWeapon(ofplayer: attackerPlayer, ofCharacter: attackerCharacter)
         let healer = isAHealerWeapon(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter)
         let lifepoint = getCharacterLife(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter)
+        let weaponName = getCharacterWeaponName(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter)
         
         if players[attackerPlayer - 1].useMana(character: attackerCharacter, impactedPoint: impactedMana) {
         if ( damage >= lifepoint ) && ( !healer ) {
             players[opponentPlayer - 1].kill(character: opponentCharacter)
         } else {
-            print("%%%%%%%%%%%%")
-            print(getCharacterWeaponName(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter))
-            print("%%%%%%%%%%%")
-            players[opponentPlayer - 1].attack(opponentCharacter: opponentCharacter, impactedPoint: damage, healer: healer, weapon: getCharacterWeaponName(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter))
+            players[opponentPlayer - 1].attack(opponentCharacter: opponentCharacter, impactedPoint: damage, healer: healer, weapon: weaponName)
         }
         saveCurrentState(player: attackerPlayer, character: attackerCharacter, opponentPlayer: opponentPlayer, opponentCharacter: opponentCharacter)
+            if weaponName == MagicRock.type {
+                players[attackerPlayer - 1].lostWeapon(character: attackerCharacter)
+            }
             return true
         } else {
             return false
         }
     }
     
+    func restoremana() {
+        for player in players {
+            player.restoreMana()
+        }
+    }
     
     func checkIfGameIsFinished() -> Bool {
         var isFinished = true

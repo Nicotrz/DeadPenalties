@@ -254,6 +254,10 @@ func play() {
     } else {
         print("\u{001B}[2J")
     }
+    
+    if myGame.currentPlayer == Game.numberOfPlayer {
+        myGame.restoremana()
+    }
 }
 
 

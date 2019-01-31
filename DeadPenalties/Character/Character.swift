@@ -55,6 +55,13 @@ class Character {
         return 0
     }
     
+    func restoreMana() {
+        mana += 10
+        if mana > 100 {
+            mana = 100
+        }
+    }
+    
     func changeCharacterWeapon(weapon: Weapon) {
         self.weapon = weapon
     }
@@ -65,13 +72,16 @@ class Character {
     }
     
     func useMana(impactedPoint: Int) -> Bool {
-        print("Attempt to remove \(impactedPoint) from \(mana)")
         if impactedPoint <= mana {
         mana -= impactedPoint
             return true
         } else {
             return false
         }
+    }
+    
+    func lostWeapon() {
+        weapon = Fist()
     }
     
     func attack(impactedPoint: Int, healer:Bool, weapon: String ) {
