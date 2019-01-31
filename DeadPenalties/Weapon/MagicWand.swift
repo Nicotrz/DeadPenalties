@@ -10,11 +10,12 @@ class MagicWand: Weapon {
     static let type = "Magic Wand ✨"
     static let givePoints = true
     static let affectedPoints = 15
+    static let affectedMana = 30
     static let magicalWeapon = true
-    static let description = "This Weapon give back \(MagicWand.affectedPoints) points to a member of the team"
+    static let description = "This Weapon give back \(MagicWand.affectedPoints) points to a member of the team.\nIt cost \(MagicWand.affectedMana) points of mana"
     
     init() {
-        super.init(type: MagicWand.type, givePoints: MagicWand.givePoints, affectedPoints: MagicWand.affectedPoints, magicalWeapon: MagicWand.magicalWeapon )
+        super.init(type: MagicWand.type, givePoints: MagicWand.givePoints, affectedPoints: MagicWand.affectedPoints, magicalWeapon: MagicWand.magicalWeapon, affectedMana: MagicWand.affectedMana )
     }
     
     override func getDescription() -> String {

@@ -10,11 +10,12 @@ class MagicBook: Weapon {
     static let type = "Magic Book 📕 "
     static let givePoints = true
     static let affectedPoints = 9999999
+    static let affectedMana = 50
     static let magicalWeapon = true
-    static let description = "This book regenerate the full life of any member of your team"
+    static let description = "This book regenerate the full life of any member of your team.\nIt cost \(MagicBook.affectedMana) points of mana "
     
     init() {
-        super.init(type: MagicBook.type, givePoints: MagicBook.givePoints, affectedPoints: MagicBook.affectedPoints, magicalWeapon: MagicBook.magicalWeapon )
+        super.init(type: MagicBook.type, givePoints: MagicBook.givePoints, affectedPoints: MagicBook.affectedPoints, magicalWeapon: MagicBook.magicalWeapon, affectedMana: MagicBook.affectedMana )
     }
     
     override func getDescription() -> String {

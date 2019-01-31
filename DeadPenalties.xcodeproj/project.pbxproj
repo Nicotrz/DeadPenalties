@@ -22,6 +22,7 @@
 		0654917E21F9A83B00175340 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654917D21F9A83B00175340 /* main.swift */; };
 		066CDC36220180A400F6E238 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066CDC35220180A400F6E238 /* Action.swift */; };
 		066CDC382202FDD200F6E238 /* MagicBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066CDC372202FDD200F6E238 /* MagicBook.swift */; };
+		066CDC3A22031CC700F6E238 /* MagicRock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066CDC3922031CC700F6E238 /* MagicRock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,7 @@
 		0654917D21F9A83B00175340 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		066CDC35220180A400F6E238 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		066CDC372202FDD200F6E238 /* MagicBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicBook.swift; sourceTree = "<group>"; };
+		066CDC3922031CC700F6E238 /* MagicRock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicRock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				0607E9C721FC6D4A003A4F5A /* Fist.swift */,
 				0607E9C521FC6CFC003A4F5A /* Axe.swift */,
 				066CDC372202FDD200F6E238 /* MagicBook.swift */,
+				066CDC3922031CC700F6E238 /* MagicRock.swift */,
 			);
 			path = Weapon;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				063DEC2E21FAEC47000C046B /* Colossus.swift in Sources */,
 				0607E9C121FC69FA003A4F5A /* Sword.swift in Sources */,
 				063DEC2421FA4077000C046B /* Character.swift in Sources */,
+				066CDC3A22031CC700F6E238 /* MagicRock.swift in Sources */,
 				063DEC2821FA553A000C046B /* Game.swift in Sources */,
 				063DEC2C21FAEC01000C046B /* Magus.swift in Sources */,
 				066CDC36220180A400F6E238 /* Action.swift in Sources */,

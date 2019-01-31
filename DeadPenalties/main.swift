@@ -94,6 +94,9 @@ func displayCarracteristics() {
                 print("\(myGame.getCharacterName(ofPlayer: playertoanalyse, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: playertoanalyse, ofCharacter: character))")
                 print("Life point:\(myGame.getCharacterLife(ofPlayer: playertoanalyse, ofCharacter: character))")
                 print("Weapon:\(myGame.getCharacterWeaponName(ofPlayer: playertoanalyse, ofCharacter: character))")
+                if myGame.isAllowedToHaveMagicalWeapon(ofPlayer: playertoanalyse, ofCharacter: character) {
+                    print("Mana: \(myGame.getMana(ofPlayer: playertoanalyse, ofCharacter: character))")
+                }
                 print(myGame.getWeaponDescription(ofPlayer: playertoanalyse, ofCharacter: character) + "\n")
             }
         }

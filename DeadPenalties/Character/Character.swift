@@ -16,7 +16,8 @@ class Character {
     let type: String
     var isDead: Bool
     var hasMagicalPower: Bool
-    
+    var mana = 100
+
     init(name: String, life: Int, weapon: Weapon, type: String, hasMagicalPower: Bool ) {
         self.name=name
         self.life = life
@@ -55,7 +56,10 @@ class Character {
         life = 0
     }
     
-    func attack(impactedPoint: Int, healer:Bool ) {
+    func attack(impactedPoint: Int, healer:Bool, typeofWeapon: String ) {
+        if typeofWeapon == MagicRock.type {
+            gainMagicalPower()
+        }
         if healer {
             life += impactedPoint
             if life > getStartingLifePoint() {

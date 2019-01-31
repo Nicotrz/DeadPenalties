@@ -8,18 +8,20 @@
 
 class Weapon {
     
-    static let numberOfWeapon = 4
+    static let numberOfWeapon = 6
     
     let givePoints: Bool
     let affectedPoints: Int
     var type: String
     let magicalWeapon: Bool
+    let affectedMana: Int
     
-    init(type: String, givePoints: Bool, affectedPoints: Int, magicalWeapon: Bool) {
+    init(type: String, givePoints: Bool, affectedPoints: Int, magicalWeapon: Bool, affectedMana: Int) {
         self.type = type
         self.givePoints = givePoints
         self.affectedPoints = affectedPoints
         self.magicalWeapon = magicalWeapon
+        self.affectedMana = affectedMana
     }
     
     func getDescription() -> String {

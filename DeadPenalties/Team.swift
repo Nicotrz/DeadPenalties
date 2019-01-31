@@ -10,7 +10,7 @@ class Team {
     var charactersArray = [Character]()
     let name: String
     
-    var magicChest = Weapon(type: "", givePoints: true, affectedPoints: 0, magicalWeapon: false)
+    var magicChest = Weapon(type: "", givePoints: true, affectedPoints: 0, magicalWeapon: false, affectedMana: 0)
     
     init(name:String) {
         self.name = name
@@ -75,6 +75,8 @@ class Team {
             magicChest = Axe()
         case 4:
             magicChest = MagicBook()
+        case 5:
+            magicChest = MagicRock()
         default:
             magicChest = Sword()
         }
@@ -106,10 +108,18 @@ class Team {
     }
     
     func attack(character:Int, impactedPoint:Int, healer:Bool ) {
-        charactersArray[character - 1].attack(impactedPoint: impactedPoint, healer: healer)
+        charactersArray[character - 1].attack(impactedPoint: impactedPoint, healer: healer, typeofWeapon: getCharacterWeaponName(ofCharacter: character))
     }
     
     func kill(character:Int) {
         charactersArray[character - 1].kill()
+    }
+    
+    func gainMagicalPower(character: Int) {
+        charactersArray[character - 1].gainMagicalPower()
+    }
+    
+    func getMana(character: Int) -> Int {
+        return charactersArray[character - 1].mana
     }
 }

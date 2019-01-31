@@ -151,7 +151,7 @@ class Game {
         var autorizeToChangeWeapon = false
         while !autorizeToChangeWeapon {
             players[index_player - 1].generateRandomWeapon()
-            if ( !(players[index_player - 1].getCharacterMagicalStatus(ofCharacter: index_character)) && (players[index_player - 1].getMagicChestMagicalStatus()) ) {
+            if ( !(players[index_player - 1].getCharacterMagicalStatus(ofCharacter: index_character)) && (players[index_player - 1].getMagicChestMagicalStatus()) ) || ( getRandomWeaponType(ofPlayer: index_player) == getCharacterWeaponName(ofPlayer: index_player, ofCharacter: index_character) ) {
                 players[index_player - 1].generateRandomWeapon()
             } else {
                 autorizeToChangeWeapon = true
@@ -180,7 +180,12 @@ class Game {
         players[index_player - 1].replaceWeaponByMagicChest(ofCharacter: index_character)
     }
 
+    func gainMagicalPower(ofPlayer index_player: Int, ofCharacter index_character: Int ) {
+        players[index_player - 1].gainMagicalPower(character: index_character)
+    }
     
-    
+    func getMana(ofPlayer index_player: Int, ofCharacter index_character: Int ) -> Int {
+        return players[index_player - 1].getMana(character: index_character)
+    }
     
 }
