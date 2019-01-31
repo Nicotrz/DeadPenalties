@@ -9,11 +9,12 @@
 class Colossus: Character {
     
     static let startLifePoint = 200
-    static let startWeapon = "Fist"
+    static let startWeapon = Fist.type
+    static let type = "🧔 Colossus"
     static let description = "A really resistant guy. But he won't hurt you a lot..\n Starting Life Point: \(Colossus.startLifePoint)\n Starting Weapon: \(Colossus.startWeapon)\n"
 
     init(name: String) {
-        super.init(name: name, life: Colossus.startLifePoint,weapon: Fist(),type: "Colossus")
+        super.init(name: name, life: Colossus.startLifePoint,weapon: Fist(),type: Colossus.type )
     }
  
     override func getStartingLifePoint() -> Int {

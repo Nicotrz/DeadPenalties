@@ -7,7 +7,7 @@
 //
 
 class MagicWand: Weapon {
-    static let type = "Magic Wand"
+    static let type = "Magic Wand ✨"
     static let givePoints = true
     static let affectedPoints = 15
     static let description = "This Weapon give back \(MagicWand.affectedPoints) points to a member of the team"

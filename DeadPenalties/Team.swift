@@ -10,20 +10,20 @@ class Team {
     var charactersArray = [Character]()
     let name: String
     
-    var magicChest = Weapon(type: "Dummy", givePoints: true, affectedPoints: 0)
+    var magicChest = Weapon(type: "", givePoints: true, affectedPoints: 0)
     
     init(name:String) {
         self.name = name
     }
     
     func addCharacter(type: String, name: String) {
-               if type == "Fighter" {
+               if type == Fighter.type {
             charactersArray.append(Fighter(name: name))
-        } else if type == "Magus" {
+        } else if type == Magus.type {
             charactersArray.append(Magus(name: name))
-        } else if type == "Colossus" {
+        } else if type == Colossus.type {
             charactersArray.append(Colossus(name: name))
-        } else if type == "Dwarf" {
+        } else if type == Dwarf.type {
             charactersArray.append(Dwarf(name: name))
         }
     }

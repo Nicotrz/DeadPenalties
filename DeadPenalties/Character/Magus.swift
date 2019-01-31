@@ -9,11 +9,12 @@
 class Magus: Character {
     
     static let startLifePoint = 75
-    static let startWeapon = "Magic Wand"
+    static let startWeapon = MagicWand.type
+    static let type = "Magus 🧙🏻‍♂️"
     static let description = "The healer of the team.\n Starting Life Point: \(Magus.startLifePoint)\n Starting Weapon: \(Magus.startWeapon)\n"
 
     init(name: String) {
-        super.init(name: name, life: Magus.startLifePoint,weapon: MagicWand(),type: "Magus")
+        super.init(name: name, life: Magus.startLifePoint,weapon: MagicWand(),type: Magus.type )
     }
     
     override func getStartingLifePoint() -> Int {

@@ -64,15 +64,15 @@ class Game {
         let random = Int.random(in: 1...4)
         switch random {
         case 1:
-            return "Colossus"
+            return Colossus.type
         case 2:
-            return "Magus"
+            return Magus.type
         case 3:
-            return "Dwarf"
+            return Dwarf.type
         case 4:
-            return "Fighter"
+            return Fighter.type
         default:
-            return "Fighter"
+            return Fighter.type
         }
     }
     
@@ -150,8 +150,8 @@ class Game {
     func generateRandomWeapon(ofPlayer index_player: Int, ofCharacter index_character: Int) -> String {
         
         var newWeapon = players[index_player - 1].generateRandomWeapon(ofCharacter: index_character)
-        while newWeapon == "Magic Wand" {
-            if getCharacterType(ofPlayer: index_player, ofCharacter: index_character) == "Magus" {
+        while newWeapon == MagicWand.type {
+            if getCharacterType(ofPlayer: index_player, ofCharacter: index_character) == Magus.type {
                 return newWeapon
             } else {
                 newWeapon = players[index_player - 1].generateRandomWeapon(ofCharacter: index_character)

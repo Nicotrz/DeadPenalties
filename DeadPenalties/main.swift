@@ -100,19 +100,6 @@ func displayCarracteristics() {
     }
 }
 
-
-//Function for automatic init of the game with forced players and characters
-func initGameDummies() {
-    myGame.addPlayer(name: "Nicolas")
-    myGame.addPlayer(name: "Jo")
-    myGame.addCharacter(ofPlayer: 1, type: "Magus", name: "Toto")
-    myGame.addCharacter(ofPlayer: 1, type: "Fighter", name: "Saruman")
-    myGame.addCharacter(ofPlayer: 1, type: "Dwarf", name: "Gimly")
-    myGame.addCharacter(ofPlayer: 2, type: "Colossus", name: "Thor")
-    myGame.addCharacter(ofPlayer: 2, type: "Fighter", name: "Pascal")
-    myGame.addCharacter(ofPlayer: 2, type: "Dwarf", name: "Gandalf")
-}
-
 func initGameWithRandomCharacter() {
     for player in 1...Game.numberOfPlayer {
         var nameAlreadyExist = true
@@ -150,7 +137,7 @@ func initGameWithRandomCharacter() {
 
 //Function for normal init of the game
 func initGameNormal () {
-    choices = ["1.Fighter: \n \(Fighter.description)","2.Magus: \n \(Magus.description)","3.Colossus: \n \(Colossus.description)","4.Dwarf: \n \(Dwarf.description)"]
+    choices = ["1. \(Fighter.type): \n \(Fighter.description)","2. \(Magus.type): \n \(Magus.description)","3. \(Colossus.type): \n \(Colossus.description)","4. \(Dwarf.type): \n \(Dwarf.description)"]
     for player in 1...Game.numberOfPlayer {
         var nameAlreadyExist = true
         var name = ""
@@ -169,13 +156,13 @@ func initGameNormal () {
             var type = ""
             switch userChoice {
             case 1:
-                type = "Fighter"
+                type = Fighter.type
             case 2:
-                type = "Magus"
+                type = Magus.type
             case 3:
-                type = "Colossus"
+                type = Colossus.type
             case 4:
-                type = "Dwarf"
+                type = Dwarf.type
             default:
                 stopError()
             }
@@ -206,11 +193,10 @@ func play() {
     myGame.nextPlayer()
     print("\n\n\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), it is your turn.\n\n")
     if !(myGame.firstAction) {
-        myGame.firstAction = false
         print("Summary of the last action:")
         print(myGame.resumeLastAction())
     }
-    
+    myGame.firstAction = false
     displayCarracteristics()
     introduction = "Choose your character:"
     choices.removeAll()
@@ -269,19 +255,17 @@ func play() {
 
 //The game Start Here with the main menu
 introduction = "\n\n\nWelcome to the Game Dead Penalties. Are you ready to start a new Game ?\n\n"
-choices = ["1. Yeah let's fight! I'm ready!", "2. Well...I'm not sure...I Better leave here..","3. Launch the game in Testing Mode (skip the configuration of players and characters) "]
+choices = ["1. Yeah let's fight! I'm ready!", "2. Begin a new game with random characters", "2. Well...I'm not sure...I Better leave here.." ]
 userChoice = askUserInput(introduction:introduction , myChoices: choices)
 
 switch userChoice {
 case 1:
-    print("Starting the game then!\n\n")
     initGameNormal()
 case 2:
+    initGameWithRandomCharacter()
+case 3:
     print("Goodbye!")
     exit(0)
-case 3:
-    print("Testing mode ON\nI skip the config of player and character\n\n")
-    initGameWithRandomCharacter()
 default:
     stopError()
 }

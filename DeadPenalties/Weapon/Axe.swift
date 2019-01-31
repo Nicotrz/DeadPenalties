@@ -7,7 +7,7 @@
 //
 
 class Axe: Weapon {
-    static let type = "Axe"
+    static let type = "Axe ⛏"
     static let givePoints = false
     static let affectedPoints = 40
     static let description = "This Weapon take \(Axe.affectedPoints) points from the opponent"
