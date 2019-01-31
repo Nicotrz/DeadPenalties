@@ -21,6 +21,7 @@
 		063DEC3021FAEC91000C046B /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DEC2F21FAEC91000C046B /* Dwarf.swift */; };
 		0654917E21F9A83B00175340 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654917D21F9A83B00175340 /* main.swift */; };
 		066CDC36220180A400F6E238 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066CDC35220180A400F6E238 /* Action.swift */; };
+		066CDC382202FDD200F6E238 /* MagicBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066CDC372202FDD200F6E238 /* MagicBook.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		0654917A21F9A83B00175340 /* DeadPenalties */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DeadPenalties; sourceTree = BUILT_PRODUCTS_DIR; };
 		0654917D21F9A83B00175340 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		066CDC35220180A400F6E238 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		066CDC372202FDD200F6E238 /* MagicBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicBook.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				0607E9C321FC6C24003A4F5A /* MagicWand.swift */,
 				0607E9C721FC6D4A003A4F5A /* Fist.swift */,
 				0607E9C521FC6CFC003A4F5A /* Axe.swift */,
+				066CDC372202FDD200F6E238 /* MagicBook.swift */,
 			);
 			path = Weapon;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				0607E9C621FC6CFC003A4F5A /* Axe.swift in Sources */,
 				063DEC2A21FAEB41000C046B /* Fighter.swift in Sources */,
 				063DEC3021FAEC91000C046B /* Dwarf.swift in Sources */,
+				066CDC382202FDD200F6E238 /* MagicBook.swift in Sources */,
 				0654917E21F9A83B00175340 /* main.swift in Sources */,
 				063DEC2E21FAEC47000C046B /* Colossus.swift in Sources */,
 				0607E9C121FC69FA003A4F5A /* Sword.swift in Sources */,

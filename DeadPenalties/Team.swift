@@ -73,6 +73,8 @@ class Team {
             magicChest = MagicWand()
         case 3:
             magicChest = Axe()
+        case 4:
+            magicChest = MagicBook()
         default:
             magicChest = Sword()
         }

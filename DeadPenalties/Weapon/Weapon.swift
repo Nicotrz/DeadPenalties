@@ -8,7 +8,7 @@
 
 class Weapon {
     
-    static let numberOfWeapon = 3
+    static let numberOfWeapon = 4
     
     let givePoints: Bool
     let affectedPoints: Int

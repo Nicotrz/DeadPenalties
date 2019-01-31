@@ -46,22 +46,6 @@ class Character {
         return 0
     }
     
-    func randomWeapon() -> Weapon {
-        let weapon: Weapon
-        let randomWeapon = Int.random(in: 1...Weapon.numberOfWeapon)
-        switch randomWeapon {
-        case 1:
-            weapon = Sword()
-        case 2:
-            weapon = MagicWand()
-        case 3:
-            weapon = Axe()
-        default:
-            weapon = Sword()
-        }
-        return weapon
-    }
-    
     func changeCharacterWeapon(weapon: Weapon) {
         self.weapon = weapon
     }

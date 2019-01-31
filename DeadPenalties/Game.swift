@@ -147,8 +147,17 @@ class Game {
         }
     
     
-    func generateRandomWeapon(ofPlayer index_player: Int) {
-        players[index_player - 1].generateRandomWeapon()
+    func generateRandomWeapon(ofPlayer index_player: Int, ofCharacter index_character: Int) {
+        var autorizeToChangeWeapon = false
+        while !autorizeToChangeWeapon {
+            players[index_player - 1].generateRandomWeapon()
+            if ( !(players[index_player - 1].getCharacterMagicalStatus(ofCharacter: index_character)) && (players[index_player - 1].getMagicChestMagicalStatus()) ) {
+                players[index_player - 1].generateRandomWeapon()
+            } else {
+                autorizeToChangeWeapon = true
+            }
+        }
+        
     }
     
     func getRandomWeaponType(ofPlayer index_player: Int) -> String {
