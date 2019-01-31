@@ -11,11 +11,12 @@ class Dwarf: Character {
     static let startLifePoint = 50
     static let startWeapon = Axe.type
     static let type = "Dwarf 👶"
+    static let hasMagicalPower = false
     static let description = "You have his loyalty. But be carreful, his size is his weakness!\n Starting Life Point: \(Dwarf.startLifePoint)\n Starting Weapon: \(Dwarf.startWeapon)\n"
 
 
     init(name: String) {
-        super.init(name: name, life: Dwarf.startLifePoint,weapon: Axe(),type:Dwarf.type )
+        super.init(name: name, life: Dwarf.startLifePoint,weapon: Axe(),type:Dwarf.type, hasMagicalPower: Dwarf.hasMagicalPower )
     }
     
     override func getStartingLifePoint() -> Int {

@@ -10,7 +10,7 @@ class Team {
     var charactersArray = [Character]()
     let name: String
     
-    var magicChest = Weapon(type: "", givePoints: true, affectedPoints: 0)
+    var magicChest = Weapon(type: "", givePoints: true, affectedPoints: 0, magicalWeapon: false)
     
     init(name:String) {
         self.name = name
@@ -48,6 +48,10 @@ class Team {
         return charactersArray[index - 1].getWeaponName()
     }
     
+    func getCharacterMagicalStatus(ofCharacter index: Int) -> Bool {
+        return charactersArray[index - 1].hasMagicalPower
+    }
+    
     func getWeaponType(ofCharacter index: Int) -> Bool {
         return charactersArray[index - 1].getTypeWeapon()
     }
@@ -60,9 +64,26 @@ class Team {
         return charactersArray[index - 1].getWeaponDescription()
     }
     
-    func generateRandomWeapon(ofCharacter index: Int) -> String {
-        magicChest = charactersArray[index - 1].randomWeapon()
+    func generateRandomWeapon() {
+        let randomWeapon = Int.random(in: 1...Weapon.numberOfWeapon)
+        switch randomWeapon {
+        case 1:
+            magicChest = Sword()
+        case 2:
+            magicChest = MagicWand()
+        case 3:
+            magicChest = Axe()
+        default:
+            magicChest = Sword()
+        }
+    }
+    
+    func getMagicChestType() -> String {
         return magicChest.type
+    }
+    
+    func getMagicChestMagicalStatus() -> Bool {
+        return magicChest.magicalWeapon
     }
     
     func replaceWeaponByMagicChest(ofCharacter index: Int) {

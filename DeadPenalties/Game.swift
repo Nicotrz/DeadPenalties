@@ -147,20 +147,21 @@ class Game {
         }
     
     
-    func generateRandomWeapon(ofPlayer index_player: Int, ofCharacter index_character: Int) -> String {
-        
-        var newWeapon = players[index_player - 1].generateRandomWeapon(ofCharacter: index_character)
-        while newWeapon == MagicWand.type {
-            if getCharacterType(ofPlayer: index_player, ofCharacter: index_character) == Magus.type {
-                return newWeapon
-            } else {
-                newWeapon = players[index_player - 1].generateRandomWeapon(ofCharacter: index_character)
-            }
-        }
-        return newWeapon
+    func generateRandomWeapon(ofPlayer index_player: Int) {
+        players[index_player - 1].generateRandomWeapon()
     }
     
+    func getRandomWeaponType(ofPlayer index_player: Int) -> String {
+        return players[index_player - 1].getMagicChestType()
+    }
     
+    func getRandomWeaponMagic(ofPlayer index_player: Int) -> Bool {
+        return players[index_player - 1].getMagicChestMagicalStatus()
+    }
+    
+    func isAllowedToHaveMagicalWeapon(ofPlayer index_player: Int, ofCharacter index_character: Int) -> Bool {
+        return players[index_player - 1].getCharacterMagicalStatus(ofCharacter: index_character)
+    }
     
     func replaceWeaponByMagicChest(ofPlayer index_player: Int, ofCharacter index_character: Int) {
         players[index_player - 1].replaceWeaponByMagicChest(ofCharacter: index_character)

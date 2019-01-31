@@ -13,11 +13,13 @@ class Weapon {
     let givePoints: Bool
     let affectedPoints: Int
     var type: String
+    let magicalWeapon: Bool
     
-    init(type: String, givePoints: Bool, affectedPoints: Int) {
+    init(type: String, givePoints: Bool, affectedPoints: Int, magicalWeapon: Bool) {
         self.type = type
         self.givePoints = givePoints
         self.affectedPoints = affectedPoints
+        self.magicalWeapon = magicalWeapon
     }
     
     func getDescription() -> String {

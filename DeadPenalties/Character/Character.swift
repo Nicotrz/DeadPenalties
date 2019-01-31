@@ -15,13 +15,15 @@ class Character {
     var weapon: Weapon
     let type: String
     var isDead: Bool
+    var hasMagicalPower: Bool
     
-    init(name: String, life: Int, weapon: Weapon, type: String) {
+    init(name: String, life: Int, weapon: Weapon, type: String, hasMagicalPower: Bool) {
         self.name=name
         self.life = life
         self.weapon = weapon
         self.type = type
         self.isDead = false
+        self.hasMagicalPower = hasMagicalPower
     }
     
     func getWeaponName() -> String {
@@ -78,6 +80,10 @@ class Character {
         } else {
             life -= impactedPoint
         }
+    }
+    
+    func gainMagicalPower() {
+        hasMagicalPower = true
     }
     
 }
