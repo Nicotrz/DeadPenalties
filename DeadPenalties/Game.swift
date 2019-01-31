@@ -56,6 +56,10 @@ class Game {
         return players[index_player - 1].getLifeWeapon(ofCharacter: index_character)
     }
     
+    func getManaWeapon(ofplayer index_player: Int, ofCharacter index_character: Int) -> Int {
+        return players[index_player - 1].getManaWeapon(ofCharacter: index_character)
+    }
+    
     func getWeaponDescription(ofPlayer index_player: Int, ofCharacter index_character: Int ) -> String {
         return players[index_player - 1].getWeaponDescription(ofCharacter: index_character)
     }
@@ -95,16 +99,23 @@ class Game {
     }
     
     
-    func attack(attackerPlayer: Int,attackerCharacter: Int, opponentPlayer: Int, opponentCharacter:Int ) {
+    func attack(attackerPlayer: Int,attackerCharacter: Int, opponentPlayer: Int, opponentCharacter:Int ) -> Bool {
         let damage = getLifeWeapon(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter)
+        let impactedMana = getManaWeapon(ofplayer: attackerPlayer, ofCharacter: attackerCharacter)
         let healer = isAHealerWeapon(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter)
         let lifepoint = getCharacterLife(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter)
+        
+        if players[attackerPlayer - 1].useMana(character: attackerCharacter, impactedPoint: impactedMana) {
         if ( damage >= lifepoint ) && ( !healer ) {
             players[opponentPlayer - 1].kill(character: opponentCharacter)
         } else {
             players[opponentPlayer - 1].attack(character: opponentCharacter, impactedPoint: damage, healer: healer)
         }
         saveCurrentState(player: attackerPlayer, character: attackerCharacter, opponentPlayer: opponentPlayer, opponentCharacter: opponentCharacter)
+            return true
+        } else {
+            return false
+        }
     }
     
     

@@ -248,8 +248,11 @@ func play() {
     
     let opponent = askUserToChooseCharacter(introduction: introduction, myChoices: choices, player: opponentPlayer)
     
-    myGame.attack(attackerPlayer: myGame.currentPlayer, attackerCharacter: attacker, opponentPlayer: opponentPlayer, opponentCharacter: opponent)
+    if !myGame.attack(attackerPlayer: myGame.currentPlayer, attackerCharacter: attacker, opponentPlayer: opponentPlayer, opponentCharacter: opponent) {
+        print("You don't have enought mana! The action has failed!")
+    }
     print("\u{001B}[2J")
+    print("\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), You don't have enought mana! The action has failed!\n\n\n\n")
 }
 
 

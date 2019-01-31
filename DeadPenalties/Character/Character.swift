@@ -39,8 +39,16 @@ class Character {
         return weapon.affectedPoints
     }
     
+    func getManaWeapon() -> Int {
+        return weapon.affectedMana
+    }
+    
     func getWeaponDescription() -> String {
         return weapon.getDescription()
+    }
+    
+    func getWeaponMagicalStatus() -> Bool {
+        return weapon.magicalWeapon
     }
     
     func getStartingLifePoint() -> Int {
@@ -54,6 +62,15 @@ class Character {
     func kill() {
         isDead = true
         life = 0
+    }
+    
+    func useMana(impactedPoint: Int) -> Bool {
+        if impactedPoint <= mana {
+        mana -= impactedPoint
+            return true
+        } else {
+            return false
+        }
     }
     
     func attack(impactedPoint: Int, healer:Bool, typeofWeapon: String ) {

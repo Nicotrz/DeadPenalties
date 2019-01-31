@@ -60,6 +60,10 @@ class Team {
         return charactersArray[index - 1].getLifeWeapon()
     }
     
+    func getManaWeapon(ofCharacter index: Int) -> Int {
+        return charactersArray[index - 1].getManaWeapon()
+    }
+    
     func getWeaponDescription(ofCharacter index: Int) -> String {
         return charactersArray[index - 1].getWeaponDescription()
     }
@@ -121,5 +125,13 @@ class Team {
     
     func getMana(character: Int) -> Int {
         return charactersArray[character - 1].mana
+    }
+    
+    func getWeaponMagicalStatus(character: Int) -> Bool {
+        return charactersArray[character - 1].getWeaponMagicalStatus()
+    }
+    
+    func useMana(character: Int, impactedPoint: Int) -> Bool {
+        return charactersArray[character - 1].useMana(impactedPoint:impactedPoint)
     }
 }
