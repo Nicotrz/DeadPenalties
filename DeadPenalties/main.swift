@@ -207,7 +207,7 @@ func play() {
     
     if myGame.generateMagicChest() {
         myGame.generateRandomWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker)
-        print("a magic chest appear! You are so lucky!\nContent: \(myGame.getRandomWeaponType(ofPlayer: myGame.currentPlayer)) )")
+        print("a magic chest appear! You are so lucky!\nContent: \(myGame.getRandomWeaponType(ofPlayer: myGame.currentPlayer))\n\(myGame.getRandomWeaponDescription(ofPlayer: myGame.currentPlayer))")
         introduction = "Do you want to take this weapon?"
         choices = ["1. Yes","2. No"]
         let choice = askUserInput(introduction: introduction, myChoices: choices)

@@ -88,6 +88,10 @@ class Team {
         return magicChest.magicalWeapon
     }
     
+    func getMagicChestDescription() -> String {
+        return magicChest.getDescription()
+    }
+    
     func replaceWeaponByMagicChest(ofCharacter index: Int) {
         charactersArray[index - 1].changeCharacterWeapon(weapon: magicChest)
     }

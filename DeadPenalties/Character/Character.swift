@@ -17,7 +17,7 @@ class Character {
     var isDead: Bool
     var hasMagicalPower: Bool
     
-    init(name: String, life: Int, weapon: Weapon, type: String, hasMagicalPower: Bool) {
+    init(name: String, life: Int, weapon: Weapon, type: String, hasMagicalPower: Bool ) {
         self.name=name
         self.life = life
         self.weapon = weapon

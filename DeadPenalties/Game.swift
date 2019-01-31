@@ -168,6 +168,10 @@ class Game {
         return players[index_player - 1].getMagicChestMagicalStatus()
     }
     
+    func getRandomWeaponDescription(ofPlayer index_player: Int) -> String {
+        return players[index_player - 1].getMagicChestDescription()
+    }
+    
     func isAllowedToHaveMagicalWeapon(ofPlayer index_player: Int, ofCharacter index_character: Int) -> Bool {
         return players[index_player - 1].getCharacterMagicalStatus(ofCharacter: index_character)
     }
