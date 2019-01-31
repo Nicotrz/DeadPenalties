@@ -249,10 +249,11 @@ func play() {
     let opponent = askUserToChooseCharacter(introduction: introduction, myChoices: choices, player: opponentPlayer)
     
     if !myGame.attack(attackerPlayer: myGame.currentPlayer, attackerCharacter: attacker, opponentPlayer: opponentPlayer, opponentCharacter: opponent) {
-        print("You don't have enought mana! The action has failed!")
+        print("\u{001B}[2J")
+        print("\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), You don't have enought mana! The action has failed!\n\n\n\n")
+    } else {
+        print("\u{001B}[2J")
     }
-    print("\u{001B}[2J")
-    print("\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), You don't have enought mana! The action has failed!\n\n\n\n")
 }
 
 
@@ -262,7 +263,7 @@ func play() {
 
 //The game Start Here with the main menu
 introduction = "\n\n\nWelcome to the Game Dead Penalties. Are you ready to start a new Game ?\n\n"
-choices = ["1. Yeah let's fight! I'm ready!", "2. Begin a new game with random characters", "2. Well...I'm not sure...I Better leave here.." ]
+choices = ["1. Yeah let's fight! I'm ready!", "2. Begin a new game with random characters", "3. Well...I'm not sure...I Better leave here.." ]
 userChoice = askUserInput(introduction:introduction , myChoices: choices)
 
 switch userChoice {

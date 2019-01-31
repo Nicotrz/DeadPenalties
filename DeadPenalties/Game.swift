@@ -109,7 +109,10 @@ class Game {
         if ( damage >= lifepoint ) && ( !healer ) {
             players[opponentPlayer - 1].kill(character: opponentCharacter)
         } else {
-            players[opponentPlayer - 1].attack(character: opponentCharacter, impactedPoint: damage, healer: healer)
+            print("%%%%%%%%%%%%")
+            print(getCharacterWeaponName(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter))
+            print("%%%%%%%%%%%")
+            players[opponentPlayer - 1].attack(opponentCharacter: opponentCharacter, impactedPoint: damage, healer: healer, weapon: getCharacterWeaponName(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter))
         }
         saveCurrentState(player: attackerPlayer, character: attackerCharacter, opponentPlayer: opponentPlayer, opponentCharacter: opponentCharacter)
             return true
@@ -192,6 +195,7 @@ class Game {
     }
 
     func gainMagicalPower(ofPlayer index_player: Int, ofCharacter index_character: Int ) {
+        print("player \(index_player) is ready to give magical power to the character \(index_character)")
         players[index_player - 1].gainMagicalPower(character: index_character)
     }
     

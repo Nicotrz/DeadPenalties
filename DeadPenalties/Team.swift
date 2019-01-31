@@ -111,8 +111,8 @@ class Team {
         return false
     }
     
-    func attack(character:Int, impactedPoint:Int, healer:Bool ) {
-        charactersArray[character - 1].attack(impactedPoint: impactedPoint, healer: healer, typeofWeapon: getCharacterWeaponName(ofCharacter: character))
+    func attack(opponentCharacter: Int, impactedPoint:Int, healer:Bool, weapon:String ) {
+        charactersArray[opponentCharacter - 1].attack(impactedPoint: impactedPoint, healer: healer, weapon: weapon)
     }
     
     func kill(character:Int) {

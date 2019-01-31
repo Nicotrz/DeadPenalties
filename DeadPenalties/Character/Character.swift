@@ -65,6 +65,7 @@ class Character {
     }
     
     func useMana(impactedPoint: Int) -> Bool {
+        print("Attempt to remove \(impactedPoint) from \(mana)")
         if impactedPoint <= mana {
         mana -= impactedPoint
             return true
@@ -73,10 +74,11 @@ class Character {
         }
     }
     
-    func attack(impactedPoint: Int, healer:Bool, typeofWeapon: String ) {
-        if typeofWeapon == MagicRock.type {
+    func attack(impactedPoint: Int, healer:Bool, weapon: String ) {
+        print("impacted point: \(impactedPoint), healer: \(healer), weapon: \(weapon)")
+        if weapon == MagicRock.type {
             gainMagicalPower()
-        }
+        } else {
         if healer {
             life += impactedPoint
             if life > getStartingLifePoint() {
@@ -85,9 +87,11 @@ class Character {
         } else {
             life -= impactedPoint
         }
+        }
     }
     
     func gainMagicalPower() {
+        print("\(name) gain magical power")
         hasMagicalPower = true
     }
     
