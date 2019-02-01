@@ -40,6 +40,10 @@ class Team {
         return charactersArray[index - 1].life
     }
     
+    func getCharacterStartingLife(ofCharacter index: Int) -> Int {
+        return charactersArray[index - 1].getStartingLifePoint()
+    }
+    
     func getCharacterDeadStatus(ofCharacter index: Int) -> Bool {
         return charactersArray[index - 1].isDead
     }
@@ -81,6 +85,8 @@ class Team {
             magicChest = MagicBook()
         case 5:
             magicChest = MagicRock()
+        case 6:
+            magicChest = BookOfDead()
         default:
             magicChest = Sword()
         }

@@ -15,6 +15,8 @@ class Action {
     var healer: Bool
     var hasKill: Bool
     var pointsAffected: Int
+    var fullLifeRecover: Bool
+    var magicRock: Bool
     
     
     init() {
@@ -25,9 +27,11 @@ class Action {
         self.healer = false
         self.hasKill = false
         self.pointsAffected = 0
+        self.fullLifeRecover = false
+        self.magicRock = false
     }
     
-    func replaceValue(player: String, character: String, opponentPlayer: String, opponentCharacter: String, healer: Bool, haskill: Bool, pointsAffected: Int) {
+    func replaceValue(player: String, character: String, opponentPlayer: String, opponentCharacter: String, healer: Bool, haskill: Bool, pointsAffected: Int, fullRecover: Bool, magicRock: Bool) {
         self.player = player
         self.character = character
         self.opponentPlayer = opponentPlayer
@@ -35,9 +39,17 @@ class Action {
         self.healer = healer
         self.hasKill = haskill
         self.pointsAffected = pointsAffected
+        self.fullLifeRecover = fullRecover
+        self.magicRock = magicRock
     }
     
     func resumeLastAction() -> String {
+        if magicRock {
+            return "\(player) used \(MagicRock.type) on \(opponentCharacter). He can now receive a magic weapon. Let's hope he will find one on a chest!"
+        }
+        if fullLifeRecover {
+            return "\(player) gave back full life to \(opponentCharacter)"
+        }
         if healer {
             return "\(player) has heal \(opponentCharacter). It gave it back \(pointsAffected) points!"
         }

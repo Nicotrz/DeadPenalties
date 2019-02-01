@@ -10,7 +10,7 @@ class Colossus: Character {
     
     static let startLifePoint = 200
     static let startWeapon = Fist.type
-    static let type = "🧔 Colossus"
+    static let type = "Colossus 🧔"
     static let hasMagicalPower = false
     static let description = "A really resistant guy. But he won't hurt you a lot..\n Starting Life Point: \(Colossus.startLifePoint)\n Starting Weapon: \(Colossus.startWeapon)\n"
 

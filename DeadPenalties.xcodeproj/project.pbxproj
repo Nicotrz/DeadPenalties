@@ -12,6 +12,7 @@
 		0607E9C421FC6C24003A4F5A /* MagicWand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0607E9C321FC6C24003A4F5A /* MagicWand.swift */; };
 		0607E9C621FC6CFC003A4F5A /* Axe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0607E9C521FC6CFC003A4F5A /* Axe.swift */; };
 		0607E9C821FC6D4A003A4F5A /* Fist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0607E9C721FC6D4A003A4F5A /* Fist.swift */; };
+		060A2CA22204306D00C1E92E /* BookOfDead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A2CA12204306D00C1E92E /* BookOfDead.swift */; };
 		063DEC2421FA4077000C046B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DEC2321FA4077000C046B /* Character.swift */; };
 		063DEC2621FA4324000C046B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DEC2521FA4324000C046B /* Team.swift */; };
 		063DEC2821FA553A000C046B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DEC2721FA553A000C046B /* Game.swift */; };
@@ -43,6 +44,7 @@
 		0607E9C321FC6C24003A4F5A /* MagicWand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicWand.swift; sourceTree = "<group>"; };
 		0607E9C521FC6CFC003A4F5A /* Axe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Axe.swift; sourceTree = "<group>"; };
 		0607E9C721FC6D4A003A4F5A /* Fist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fist.swift; sourceTree = "<group>"; };
+		060A2CA12204306D00C1E92E /* BookOfDead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookOfDead.swift; sourceTree = "<group>"; };
 		063DEC2321FA4077000C046B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		063DEC2521FA4324000C046B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		063DEC2721FA553A000C046B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				0607E9C521FC6CFC003A4F5A /* Axe.swift */,
 				066CDC372202FDD200F6E238 /* MagicBook.swift */,
 				066CDC3922031CC700F6E238 /* MagicRock.swift */,
+				060A2CA12204306D00C1E92E /* BookOfDead.swift */,
 			);
 			path = Weapon;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				063DEC2C21FAEC01000C046B /* Magus.swift in Sources */,
 				066CDC36220180A400F6E238 /* Action.swift in Sources */,
 				0607E9BE21FB7B58003A4F5A /* Weapon.swift in Sources */,
+				060A2CA22204306D00C1E92E /* BookOfDead.swift in Sources */,
 				0607E9C821FC6D4A003A4F5A /* Fist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

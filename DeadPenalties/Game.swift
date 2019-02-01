@@ -103,8 +103,10 @@ class Game {
         let damage = getLifeWeapon(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter)
         let impactedMana = getManaWeapon(ofplayer: attackerPlayer, ofCharacter: attackerCharacter)
         let healer = isAHealerWeapon(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter)
-        let lifepoint = getCharacterLife(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter)
+        var lifepoint = getCharacterLife(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter)
         let weaponName = getCharacterWeaponName(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter)
+        let fullRecover: Bool
+        let magicRock: Bool
         
         if players[attackerPlayer - 1].useMana(character: attackerCharacter, impactedPoint: impactedMana) {
         if ( damage >= lifepoint ) && ( !healer ) {
@@ -112,8 +114,11 @@ class Game {
         } else {
             players[opponentPlayer - 1].attack(opponentCharacter: opponentCharacter, impactedPoint: damage, healer: healer, weapon: weaponName)
         }
-        saveCurrentState(player: attackerPlayer, character: attackerCharacter, opponentPlayer: opponentPlayer, opponentCharacter: opponentCharacter)
-            if weaponName == MagicRock.type {
+        lifepoint = getCharacterLife(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter)
+        fullRecover = (( lifepoint == players[opponentPlayer - 1].getCharacterStartingLife(ofCharacter: opponentCharacter) ) && ( healer ))
+        magicRock = ( weaponName == MagicRock.type )
+            saveCurrentState(player: attackerPlayer, character: attackerCharacter, opponentPlayer: opponentPlayer, opponentCharacter: opponentCharacter, fullRecover: fullRecover, magicRock: magicRock )
+            if ( ( magicRock ) || ( weaponName == BookOfDead.type ) ) {
                 players[attackerPlayer - 1].lostWeapon(character: attackerCharacter)
             }
             return true
@@ -144,8 +149,8 @@ class Game {
         return isFinished
     }
     
-    func saveCurrentState(player: Int, character: Int, opponentPlayer: Int, opponentCharacter: Int) {
-        lastAction.replaceValue(player: getPlayerName(ofPlayer: player), character: getCharacterName(ofPlayer: player, ofCharacter: character), opponentPlayer: getPlayerName(ofPlayer: opponentPlayer), opponentCharacter: getCharacterName(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter), healer: isAHealerWeapon(ofPlayer: player, ofCharacter: character), haskill: getCharacterDeadStatus(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter), pointsAffected: getLifeWeapon(ofPlayer: player, ofCharacter: character))
+    func saveCurrentState(player: Int, character: Int, opponentPlayer: Int, opponentCharacter: Int, fullRecover: Bool, magicRock: Bool) {
+        lastAction.replaceValue(player: getPlayerName(ofPlayer: player), character: getCharacterName(ofPlayer: player, ofCharacter: character), opponentPlayer: getPlayerName(ofPlayer: opponentPlayer), opponentCharacter: getCharacterName(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter), healer: isAHealerWeapon(ofPlayer: player, ofCharacter: character), haskill: getCharacterDeadStatus(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter), pointsAffected: getLifeWeapon(ofPlayer: player, ofCharacter: character), fullRecover: fullRecover, magicRock: magicRock)
     }
     
     func resumeLastAction() -> String {
