@@ -45,7 +45,7 @@ class Action {
     
     func resumeLastAction() -> String {
         if magicRock {
-            return "\(player) used \(MagicRock.type) on \(opponentCharacter). He can now receive a magic weapon. Let's hope he will find one on a chest!"
+            return "\(player) used \(MagicRock.type) on \(opponentCharacter)."
         }
         if fullLifeRecover {
             return "\(player) gave back full life to \(opponentCharacter)"

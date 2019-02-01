@@ -47,6 +47,10 @@ class Game {
     func getCharacterWeaponName(ofPlayer index_player: Int, ofCharacter index_character: Int) -> String {
         return players[index_player - 1].getCharacterWeaponName(ofCharacter: index_character)
     }
+    
+    func getCharacterStartingLifePoint(ofPlayer index_player: Int, ofCharacter index_character: Int) -> Int {
+        return players[index_player - 1].getCharacterStartingLife(ofCharacter: index_character)
+    }
  
     func isAHealerWeapon(ofPlayer index_player: Int, ofCharacter index_character: Int ) -> Bool {
         return players[index_player - 1].getWeaponType(ofCharacter: index_character)
@@ -134,6 +138,7 @@ class Game {
         }
     }
     
+    
     func checkIfGameIsFinished() -> Bool {
         var isFinished = true
         for player in 1...Game.numberOfPlayer {
@@ -213,6 +218,10 @@ class Game {
     
     func getMana(ofPlayer index_player: Int, ofCharacter index_character: Int ) -> Int {
         return players[index_player - 1].getMana(character: index_character)
+    }
+    
+    func restoreFullMana(ofPlayer index_player: Int, ofCharacter index_character: Int ) {
+        players[index_player - 1].restoreFullMana(character: index_character)
     }
     
 }

@@ -66,6 +66,10 @@ class Character {
         }
     }
     
+    func restoreFullMana() {
+        mana = 100
+    }
+    
     func changeCharacterWeapon(weapon: Weapon) {
         self.weapon = weapon
     }
@@ -92,6 +96,7 @@ class Character {
         print("impacted point: \(impactedPoint), healer: \(healer), weapon: \(weapon)")
         if weapon == MagicRock.type {
             gainMagicalPower()
+            restoreFullMana()
         } else {
         if healer {
             life += impactedPoint

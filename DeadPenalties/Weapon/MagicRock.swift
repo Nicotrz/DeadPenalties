@@ -12,7 +12,7 @@ class MagicRock: Weapon {
     static let affectedPoints = 0
     static let affectedMana = 0
     static let magicalWeapon = false
-    static let description = "This rock give at your characters the ability to use magical weapon! It can only be used once."
+    static let description = "This rock give at your characters the ability to use magical weapon! It can only be used once. If the character already have magic power, it restore his mana at full capacity"
     static let oneTimeWeapon = true
     
     init() {

@@ -76,6 +76,10 @@ class Team {
         return charactersArray[index - 1].getOneTimeWeapon()
     }
     
+    func getCharacterStartingLifePoint(ofCharacter index: Int) -> Int {
+        return charactersArray[index - 1].getStartingLifePoint()
+    }
+    
     func generateRandomWeapon() {
         let randomWeapon = Int.random(in: 1...Weapon.numberOfWeapon)
         switch randomWeapon {
@@ -91,6 +95,8 @@ class Team {
             magicChest = MagicRock()
         case 6:
             magicChest = BookOfDead()
+        case 7:
+            magicChest = MagicPotion()
         default:
             magicChest = Sword()
         }
@@ -139,6 +145,10 @@ class Team {
     
     func getMana(character: Int) -> Int {
         return charactersArray[character - 1].mana
+    }
+    
+    func restoreFullMana(character: Int) {
+        charactersArray[character - 1].restoreFullMana()
     }
     
     func restoreMana() {

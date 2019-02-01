@@ -92,10 +92,10 @@ func displayCarracteristics() {
         for character in 1...Character.numberOfCharacters {
             if !myGame.getCharacterDeadStatus(ofPlayer: playertoanalyse, ofCharacter: character) {
                 print("\(myGame.getCharacterName(ofPlayer: playertoanalyse, ofCharacter: character)) the \(myGame.getCharacterType(ofPlayer: playertoanalyse, ofCharacter: character))")
-                print("Life point:\(myGame.getCharacterLife(ofPlayer: playertoanalyse, ofCharacter: character))")
+                print("Life point:\(myGame.getCharacterLife(ofPlayer: playertoanalyse, ofCharacter: character)) / \(myGame.getCharacterStartingLifePoint(ofPlayer: playertoanalyse, ofCharacter: character))")
                 print("Weapon:\(myGame.getCharacterWeaponName(ofPlayer: playertoanalyse, ofCharacter: character))")
                 if myGame.isAllowedToHaveMagicalWeapon(ofPlayer: playertoanalyse, ofCharacter: character) {
-                    print("Mana: \(myGame.getMana(ofPlayer: playertoanalyse, ofCharacter: character))")
+                    print("Mana: \(myGame.getMana(ofPlayer: playertoanalyse, ofCharacter: character)) / 100")
                 }
                 print(myGame.getWeaponDescription(ofPlayer: playertoanalyse, ofCharacter: character) + "\n")
             }
@@ -223,6 +223,7 @@ func play() {
             introduction = "Do you want to use your new weapon now?"
             choices = ["1. Yes","2. No"]
             useThisWeapon = ( askUserInput(introduction: introduction, myChoices: choices) == 1 )
+            displayCarracteristics()
         case 2:
             print("Nothing done")
             displayCarracteristics()
