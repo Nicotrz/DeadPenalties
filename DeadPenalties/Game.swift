@@ -105,6 +105,7 @@ class Game {
         let healer = isAHealerWeapon(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter)
         var lifepoint = getCharacterLife(ofPlayer: opponentPlayer, ofCharacter: opponentCharacter)
         let weaponName = getCharacterWeaponName(ofPlayer: attackerPlayer, ofCharacter: attackerCharacter)
+        let oneTimeWeapon = players[attackerPlayer - 1].getOneTimeWeapon(ofCharacter: attackerCharacter)
         let fullRecover: Bool
         let magicRock: Bool
         
@@ -118,7 +119,7 @@ class Game {
         fullRecover = (( lifepoint == players[opponentPlayer - 1].getCharacterStartingLife(ofCharacter: opponentCharacter) ) && ( healer ))
         magicRock = ( weaponName == MagicRock.type )
             saveCurrentState(player: attackerPlayer, character: attackerCharacter, opponentPlayer: opponentPlayer, opponentCharacter: opponentCharacter, fullRecover: fullRecover, magicRock: magicRock )
-            if ( ( magicRock ) || ( weaponName == BookOfDead.type ) ) {
+            if oneTimeWeapon {
                 players[attackerPlayer - 1].lostWeapon(character: attackerCharacter)
             }
             return true

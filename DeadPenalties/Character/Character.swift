@@ -51,6 +51,10 @@ class Character {
         return weapon.magicalWeapon
     }
     
+    func getOneTimeWeapon() -> Bool {
+        return weapon.oneTimeWeapon
+    }
+    
     func getStartingLifePoint() -> Int {
         return 0
     }

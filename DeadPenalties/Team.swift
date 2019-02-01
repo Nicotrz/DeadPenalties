@@ -10,7 +10,7 @@ class Team {
     var charactersArray = [Character]()
     let name: String
     
-    var magicChest = Weapon(type: "", givePoints: true, affectedPoints: 0, magicalWeapon: false, affectedMana: 0)
+    var magicChest = Weapon(type: "", givePoints: true, affectedPoints: 0, magicalWeapon: false, affectedMana: 0, oneTimeWeapon: false)
     
     init(name:String) {
         self.name = name
@@ -70,6 +70,10 @@ class Team {
     
     func getWeaponDescription(ofCharacter index: Int) -> String {
         return charactersArray[index - 1].getWeaponDescription()
+    }
+    
+    func getOneTimeWeapon(ofCharacter index: Int) -> Bool {
+        return charactersArray[index - 1].getOneTimeWeapon()
     }
     
     func generateRandomWeapon() {

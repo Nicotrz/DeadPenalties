@@ -13,9 +13,10 @@ class BookOfDead: Weapon {
     static let affectedMana = 90
     static let magicalWeapon = true
     static let description = "The formula in this book kill any member of the opposite team.\nIt cost \(BookOfDead.affectedMana) points of mana and can only be used once "
+    static let oneTimeWeapon = true
     
     init() {
-        super.init(type: BookOfDead.type, givePoints: BookOfDead.givePoints, affectedPoints: BookOfDead.affectedPoints, magicalWeapon: BookOfDead.magicalWeapon, affectedMana: BookOfDead.affectedMana )
+        super.init(type: BookOfDead.type, givePoints: BookOfDead.givePoints, affectedPoints: BookOfDead.affectedPoints, magicalWeapon: BookOfDead.magicalWeapon, affectedMana: BookOfDead.affectedMana, oneTimeWeapon: BookOfDead.oneTimeWeapon )
     }
     
     override func getDescription() -> String {

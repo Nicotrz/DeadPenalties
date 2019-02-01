@@ -13,9 +13,10 @@ class Sword: Weapon {
     static let affectedMana = 0
     static let affectedPoints = 10
     static let description = "This Weapon take \(Sword.affectedPoints) points from the opponent"
+    static let oneTimeWeapon = false
     
     init() {
-        super.init(type: Sword.type, givePoints: Sword.givePoints, affectedPoints: Sword.affectedPoints, magicalWeapon: Sword.magicalWeapon, affectedMana: Sword.affectedMana )
+        super.init(type: Sword.type, givePoints: Sword.givePoints, affectedPoints: Sword.affectedPoints, magicalWeapon: Sword.magicalWeapon, affectedMana: Sword.affectedMana, oneTimeWeapon: Sword.oneTimeWeapon )
     }
     
     override func getDescription() -> String {

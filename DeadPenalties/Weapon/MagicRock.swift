@@ -12,10 +12,11 @@ class MagicRock: Weapon {
     static let affectedPoints = 0
     static let affectedMana = 0
     static let magicalWeapon = false
-    static let description = "This rock give at your characters the ability to use magical weapon! Choose wisely, you can only use it once. You won't have any weapon after using this one"
+    static let description = "This rock give at your characters the ability to use magical weapon! It can only be used once."
+    static let oneTimeWeapon = true
     
     init() {
-        super.init(type: MagicRock.type, givePoints: MagicRock.givePoints, affectedPoints: MagicRock.affectedPoints, magicalWeapon: MagicRock.magicalWeapon, affectedMana: MagicRock.affectedMana )
+        super.init(type: MagicRock.type, givePoints: MagicRock.givePoints, affectedPoints: MagicRock.affectedPoints, magicalWeapon: MagicRock.magicalWeapon, affectedMana: MagicRock.affectedMana, oneTimeWeapon: MagicRock.oneTimeWeapon )
     }
     
     override func getDescription() -> String {

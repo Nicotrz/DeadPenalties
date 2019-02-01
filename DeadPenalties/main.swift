@@ -193,6 +193,7 @@ func initGameNormal () {
 
 //Func for a complete turn of the game
 func play() {
+    var useThisWeapon = true
     myGame.nextPlayer()
     print("\n\n\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), it is your turn.\n\n")
     if !(myGame.firstAction) {
@@ -218,15 +219,19 @@ func play() {
         case 1:
             myGame.replaceWeaponByMagicChest(ofPlayer: myGame.currentPlayer, ofCharacter: attacker)
             print("Weapon Replaced!")
+            displayCarracteristics()
+            introduction = "Do you want to use your new weapon now?"
+            choices = ["1. Yes","2. No"]
+            useThisWeapon = ( askUserInput(introduction: introduction, myChoices: choices) == 1 )
         case 2:
             print("Nothing done")
+            displayCarracteristics()
         default:
             stopError()
         }
-        displayCarracteristics()
     }
     
-    
+    if useThisWeapon {
     if myGame.isAHealerWeapon(ofPlayer: myGame.currentPlayer, ofCharacter: attacker ) {
         introduction = "Choose the member to heal:"
     } else {
@@ -253,6 +258,7 @@ func play() {
         print("\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), You don't have enought mana! The action has failed!\n\n\n\n")
     } else {
         print("\u{001B}[2J")
+    }
     }
     
     if myGame.currentPlayer == Game.numberOfPlayer {
