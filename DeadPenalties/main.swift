@@ -244,9 +244,10 @@ func play() {
     if !(myGame.firstAction) {
         print("Summary of the last action:")
         print(myGame.resumeLastAction())
-        myGame.firstAction = false
     }
-    
+    //This is not the first action anymore when we will have finished..
+    myGame.firstAction = false
+
     //Displaying the carracteristics of characters
     displayCarracteristics()
     
