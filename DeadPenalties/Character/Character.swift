@@ -6,18 +6,28 @@
 //  Copyright © 2019 Nicolas Sommereijns. All rights reserved.
 //
 
+//Contain all caracteristics of a character
 class Character {
     
+    //This value can be changed for changing the number of characters on the game ( 3 is the default)
     static let numberOfCharacters = 3
     
+    //Name of the character
     let name: String
+    //Life points available
     var life: Int
+    //His weapon
     var weapon: Weapon
+    //Type of character
     let type: String
+    //Is he dead?
     var isDead: Bool
+    //Does he have magical power?
     var hasMagicalPower: Bool
+    //Mana is 100 by default for everyone ( not used if no magical power)
     var mana = 100
 
+    //Initiate a new character
     init(name: String, life: Int, weapon: Weapon, type: String, hasMagicalPower: Bool ) {
         self.name=name
         self.life = life
@@ -27,6 +37,12 @@ class Character {
         self.hasMagicalPower = hasMagicalPower
     }
     
+    //Function set to be overwrite by children. Return 0 ( dummy )
+    func getStartingLifePoint() -> Int {
+        return 0
+    }
+    
+    //Get the weapon caracteristics
     func getWeaponName() -> String {
         return weapon.type
     }
@@ -54,11 +70,8 @@ class Character {
     func getOneTimeWeapon() -> Bool {
         return weapon.oneTimeWeapon
     }
-    
-    func getStartingLifePoint() -> Int {
-        return 0
-    }
-    
+
+    //Restore the mana of 10 points at each turn. Max set is 100
     func restoreMana() {
         mana += 10
         if mana > 100 {
@@ -66,19 +79,28 @@ class Character {
         }
     }
     
+    //Restore the Full mana ( Magic Rock effect)
     func restoreFullMana() {
         mana = 100
     }
     
+    //Set a new sending weapon to the character
     func changeCharacterWeapon(weapon: Weapon) {
         self.weapon = weapon
     }
     
+    //The character does not have any weapon anymore => Forcing a Fist
+    func lostWeapon() {
+        weapon = Fist()
+    }
+    
+    //Kill the character
     func kill() {
         isDead = true
         life = 0
     }
     
+    //Trying to use the given mana. If the action was a success ( enought mana), we send true. Else we send false
     func useMana(impactedPoint: Int) -> Bool {
         if impactedPoint <= mana {
         mana -= impactedPoint
@@ -88,29 +110,30 @@ class Character {
         }
     }
     
-    func lostWeapon() {
-        weapon = Fist()
-    }
-    
+ 
+    //The character has been attacked
     func attack(impactedPoint: Int, healer:Bool, weapon: String ) {
-        print("impacted point: \(impactedPoint), healer: \(healer), weapon: \(weapon)")
+        //Special case: if this is a magic rock, the user gain magical power and restore full mana
         if weapon == MagicRock.type {
             gainMagicalPower()
             restoreFullMana()
         } else {
+        //If it is not, checking if the attacker was a healer. If it was, he gain points. if not, he lost points
         if healer {
             life += impactedPoint
+            //If we are higher then the number of max points, we set the life to the starting point life
             if life > getStartingLifePoint() {
                 life = getStartingLifePoint()
             }
         } else {
+            //We loose point
             life -= impactedPoint
         }
         }
     }
     
+    //Magic rock effect: the user gain magical power
     func gainMagicalPower() {
-        print("\(name) gain magical power")
         hasMagicalPower = true
     }
     

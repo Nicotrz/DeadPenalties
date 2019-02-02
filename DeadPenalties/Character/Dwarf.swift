@@ -6,6 +6,7 @@
 //  Copyright © 2019 Nicolas Sommereijns. All rights reserved.
 //
 
+//Dwarf child of the Character object
 class Dwarf: Character {
     
     static let startLifePoint = 50
@@ -15,10 +16,12 @@ class Dwarf: Character {
     static let description = "You have his loyalty. But be carreful, his size is his weakness!\n Starting Life Point: \(Dwarf.startLifePoint)\n Starting Weapon: \(Dwarf.startWeapon)\n"
 
 
+    //Initiate
     init(name: String) {
         super.init(name: name, life: Dwarf.startLifePoint,weapon: Axe(),type:Dwarf.type, hasMagicalPower: Dwarf.hasMagicalPower )
     }
     
+    //Get starting life point
     override func getStartingLifePoint() -> Int {
         return Dwarf.startLifePoint
     }
