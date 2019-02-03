@@ -6,7 +6,16 @@
 //  Copyright © 2019 Nicolas Sommereijns. All rights reserved.
 //
 
+import Foundation
 import Darwin
+
+func clearScreen() {
+    let clearScreen = Process()
+    clearScreen.launchPath = "/usr/bin/clear"
+    clearScreen.arguments = []
+    clearScreen.launch()
+    clearScreen.waitUntilExit()
+}
 
 //Instance of an object Game
 var myGame = Game()
@@ -38,7 +47,7 @@ func askUserInput(introduction: String, myChoices: [String]) -> Int {
             if let int = Int(choice) {
                 if int <= myChoices.count && int != 0 {
                     result = int
-                    print("\u{001B}[2J")
+                    clearScreen()
                     return result
                 }
             }
@@ -87,7 +96,7 @@ func askUserText(introduction: String) -> String {
         if let inputText = readLine() {
             if inputText != "" {
                 result = inputText
-                print("\u{001B}[2J")
+                clearScreen()
                 return result
             }
         }
@@ -315,11 +324,11 @@ func play() {
     
     //The attack function response false if the action has failed by lack on Mana for a magic action
     if !myGame.attack(attackerPlayer: myGame.currentPlayer, attackerCharacter: attacker, opponentPlayer: opponentPlayer, opponentCharacter: opponent) {
-        print("\u{001B}[2J")
+        clearScreen()
         print("\(myGame.getPlayerName(ofPlayer: myGame.currentPlayer)), You don't have enought mana! The action has failed!\n\n\n\n")
     } else {
-        print("\u{001B}[2J")
-    }
+        clearScreen()
+        }
     }
     
     //When we arrived at the last player ( 1 turned has pass), we can give points of mana to each character

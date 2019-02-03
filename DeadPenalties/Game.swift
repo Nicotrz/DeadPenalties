@@ -220,9 +220,10 @@ class Game {
         }
     }
     
-    //Func to generate the magic chest or not..
+    //Func to generate the magic chest or not. It has 30% chances of appear
     func generateMagicChest() -> Bool {
-        return Bool.random()
+        let willgenerate = Int.random(in: 0...100)
+        return ( willgenerate <= 30 )
         }
     
     //Function to generate the random weapon founded on the magic chest
