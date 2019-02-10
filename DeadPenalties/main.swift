@@ -10,11 +10,9 @@ import Foundation
 import Darwin
 
 func clearScreen() {
-    let clearScreen = Process()
-    clearScreen.launchPath = "/usr/bin/clear"
-    clearScreen.arguments = []
-    clearScreen.launch()
-    clearScreen.waitUntilExit()
+    for _ in 1...100 {
+        print("\n")
+    }
 }
 
 //Instance of an object Game
