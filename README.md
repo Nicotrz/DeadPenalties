@@ -18,12 +18,12 @@ Just clone this repo, archive it with Xcode and you're good to go!
 ## Characters
 
 While playing, you can use:
-- The colossus: A really resistant guy. But he won't hurt you a lot
+- **The colossus: A really resistant guy. But he won't hurt you a lot**
   -Starting life points: 200
   -Starting weapon: Fist
-- The Magu: The healer of the team
+- **The Magu: The healer of the team**
   -Starting life points: 7
   -Starting weapon: Magic Wand
-- The Dwarf: You have his loyalty. But be carreful, his size is his weakness!
+- **The Dwarf: You have his loyalty. But be carreful, his size is his weakness!**
   -Starting life points: 50
   -Starting weapon: The Axe
