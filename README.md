@@ -11,6 +11,22 @@ Just clone this repo, archive it with Xcode and you're good to go!
 ## Features
 
 - 2 supported players
-- 3 supporter characters by players
+- 3 supported characters by players
 - 8 differents types of usable weapons
 - 4 differents types of usable characters
+
+## Characters
+
+While playing, you can use:
+- The colossus
+A really resistant guy. But he won't hurt you a lot
+Starting life points: 200
+Starting weapon: Fist
+- The Magus
+The healer of the team
+Starting life points: 75
+Starting weapon: Magic Wand
+- The Dwarf
+You have his loyalty. But be carreful, his size is his weakness!
+Starting life points: 50
+Starting weapon: The Axe
