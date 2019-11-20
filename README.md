@@ -19,6 +19,11 @@ Just clone this repo, archive it with Xcode and you're good to go!
 
 While playing, you can use:
 - **The colossus: A really resistant guy. But he won't hurt you a lot**
+    - Starting life points: 200
+    - Starting weapon: Fist
+
+
+- **The colossus: A really resistant guy. But he won't hurt you a lot**
   -Starting life points: 200
   -Starting weapon: Fist
 - **The Magu: The healer of the team**
