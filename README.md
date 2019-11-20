@@ -1,5 +1,5 @@
 # Dead Penalties
-> A simple Command line game for the project number 3 for the iOS Developer training program of OpenclassRooms
+> A simple Command line game for the project number 3 of the iOS Developer training program of OpenclassRooms
 
 <a href="https://github.com/Nicotrz"><img src="https://github.com/Nicotrz/DeadPenalties/blob/master/Capture%20d’écran%202019-11-20%20à%2020.19.51.png?raw=true" title="Dead Penalties" alt="Nicotrz"></a>
 <!-- [![FVCproductions](https://github.com/Nicotrz/DeadPenalties/blob/master/Capture%20d’écran%202019-11-20%20à%2020.23.58.png?raw=true)](https://github.com/Nicotrz) -->
@@ -69,5 +69,40 @@ During the game, you can have the luck to find a magic chest containing a new we
     - Only suitable for a character with magic power: No
     - Affected points: 20 points fiven to a member of the team
 
+## Other informations
 
+A magical character start with 100 points of mana (this is the max given) and each turn will recover them 10 points back
 
+## Code structure
+
+This code is meant to show a correct usage of the Inheritance.
+For example, main characteristics of a weapon are on the Weapon class:
+```Swift
+    //Number of weapon currently available ( Fist is not included..Not really a weapon)
+    static let numberOfWeapon = 7
+    
+    //Does the weapon give point?
+    let givePoints: Bool
+    //How many points are impacted?
+    let affectedPoints: Int
+    //What is the type ( name ) of the weapon?
+    var type: String
+    //Is this a magical weapon?
+    let magicalWeapon: Bool
+    //How many Mana points are impacted?
+    let affectedMana: Int
+    //Can the weapon be used more than once?
+    let oneTimeWeapon: Bool
+```
+But all the more precises characteristics are on the child classes. Example with the Sword class:
+```Swift
+class Sword: Weapon {
+    //Caracteristics of the sword
+    static let type = "Sword ⚔️"
+    static let givePoints = false
+    static let magicalWeapon = false
+    static let affectedMana = 0
+    static let affectedPoints = 10
+    static let description = "This Weapon take \(Sword.affectedPoints) points from the opponent"
+    static let oneTimeWeapon = false
+```
