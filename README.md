@@ -78,6 +78,7 @@ A magical character start with 100 points of mana (this is the max given) and ea
 This code is meant to show a correct usage of the Inheritance.
 For example, main characteristics of a weapon are on the Weapon class:
 ```Swift
+class Weapon {
     //Number of weapon currently available ( Fist is not included..Not really a weapon)
     static let numberOfWeapon = 7
     
@@ -93,6 +94,7 @@ For example, main characteristics of a weapon are on the Weapon class:
     let affectedMana: Int
     //Can the weapon be used more than once?
     let oneTimeWeapon: Bool
+}
 ```
 But all the more precises characteristics are on the child classes. Example with the Sword class:
 ```Swift
@@ -105,4 +107,19 @@ class Sword: Weapon {
     static let affectedPoints = 10
     static let description = "This Weapon take \(Sword.affectedPoints) points from the opponent"
     static let oneTimeWeapon = false
+    
+        //Initiate any weapon with given caracteristics
+    init(type: String, givePoints: Bool, affectedPoints: Int, magicalWeapon: Bool, affectedMana: Int, oneTimeWeapon: Bool) {
+        self.type = type
+        self.givePoints = givePoints
+        self.affectedPoints = affectedPoints
+        self.magicalWeapon = magicalWeapon
+        self.affectedMana = affectedMana
+        self.oneTimeWeapon = oneTimeWeapon
+    }
+}
 ```
+With this configuration, we can easily create new characters and weapon whitout having to change the all code.
+
+## Credits
+Nicolas Sommereijns - 2019
