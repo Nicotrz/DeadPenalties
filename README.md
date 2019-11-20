@@ -75,7 +75,7 @@ A magical character start with 100 points of mana (this is the max given) and ea
 
 ## Code structure
 
-This code is meant to show a correct usage of the Inheritance.
+This simple game is meant to show a correct usage of the Inheritance with Swift.
 For example, main characteristics of a weapon are on the Weapon class:
 ```Swift
 class Weapon {
