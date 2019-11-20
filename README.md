@@ -21,14 +21,9 @@ While playing, you can use:
 - **The colossus: A really resistant guy. But he won't hurt you a lot**
     - Starting life points: 200
     - Starting weapon: Fist
-
-
-- **The colossus: A really resistant guy. But he won't hurt you a lot**
-  -Starting life points: 200
-  -Starting weapon: Fist
 - **The Magu: The healer of the team**
-  -Starting life points: 7
-  -Starting weapon: Magic Wand
+    - Starting life points: 75
+    - Starting weapon: Magic Wand
 - **The Dwarf: You have his loyalty. But be carreful, his size is his weakness!**
-  -Starting life points: 50
-  -Starting weapon: The Axe
+    - Starting life points: 50
+    - Starting weapon: The Axe
